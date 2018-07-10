@@ -12,15 +12,56 @@ public class Empresa {
 	ArrayList<Factura> misfacturas;
 	private static Empresa emp;
 	
-	public Empresa(ArrayList<Cliente> clientes, ArrayList<Personal> mistrabajadores, ArrayList<Plan> planes,
-			ArrayList<Factura> misfacturas) {
+	public Empresa() {
 		super();
 		this.clientes = new ArrayList<>();
 		this.mistrabajadores = new ArrayList<>();
 		this.planes = new ArrayList<>();
 		this.misfacturas = new ArrayList<>();
 	}
+	
+	public static Empresa getInstance(){
+		 if( emp== null){
+			 emp = new Empresa();
+		 }
+		 
+		 return emp;
+	} 
 
+
+public Cliente findclientbycode (String code) {
+	// TODO Auto-generated method stub
+	 Cliente aux = null;
+	 boolean find = false;
+	 int i = 0;
+	 while( i < clientes.size() && !find){
+		 if(clientes.get(i).getCodigo().equalsIgnoreCase(code))
+		 {
+			 find = true;
+			 aux = clientes.get(i);
+		  }
+		 i++;
+		 }
+	 return aux;
+ }
+	
+public Plan findplanbycode (String code) {
+	// TODO Auto-generated method stub
+	 Plan aux = null;
+	 boolean find = false;
+	 int i = 0;
+	 while( i < planes.size() && !find){
+		 if(planes.get(i).getCodigo().equalsIgnoreCase(code))
+		 {
+			 find = true;
+			 aux = planes.get(i);
+		  }
+		 i++;
+		 }
+	 return aux;
+ }
+	
+	
 	public ArrayList<Cliente> getClientes() {
 		return clientes;
 	}
