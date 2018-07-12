@@ -6,17 +6,45 @@ public abstract class Personal {
 	protected float sueldo;
 	private String usuario;
 	private String contrasena;
+	protected float pagoHoraExt;
+	protected int HoraExt;
 	
-	public abstract float calculoSueldo();
-	
-	public Personal(String codigo, String nombre, float sueldo, String usuario, String contrasena) {
+	public Personal(String codigo, String nombre, float sueldo, String usuario, String contrasena, float pagoHoraExt,
+			int horaExt) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.sueldo = sueldo;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
+		this.pagoHoraExt = pagoHoraExt;
+		HoraExt = horaExt;
 	}
+
+
+	public abstract float calculoSueldo();
+	
+	
+	public float getPagoHoraExt() {
+		return pagoHoraExt;
+	}
+
+
+	public void setPagoHoraExt(float pagoHoraExt) {
+		this.pagoHoraExt = pagoHoraExt;
+	}
+
+
+	public int getHoraExt() {
+		return HoraExt;
+	}
+
+
+	public void setHoraExt(int horaExt) {
+		HoraExt = horaExt;
+	}
+
+
 	public String getCodigo() {
 		return codigo;
 	}

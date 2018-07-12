@@ -6,14 +6,17 @@ public class Administrador extends Personal {
 	
 	public float calculoSueldo() {
 		float salario = 0;
-		salario=sueldo;
+		salario=sueldo+(pagoHoraExt*HoraExt);
 		return salario;
 	}
 
-	public Administrador(String codigo, String nombre, float sueldo, String usuario, String contrasena, String cargo) {
-		super(codigo, nombre, sueldo, usuario, contrasena);
-		this.cargo = cargo;
+	
+	public Administrador(String codigo, String nombre, float sueldo, String usuario, String contrasena,
+			float pagoHoraExt, int horaExt) {
+		super(codigo, nombre, sueldo, usuario, contrasena, pagoHoraExt, horaExt);
+		// TODO Auto-generated constructor stub
 	}
+
 
 	public String getCargo() {
 		return cargo;
