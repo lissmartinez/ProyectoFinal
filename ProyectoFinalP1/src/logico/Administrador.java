@@ -3,10 +3,11 @@ package logico;
 public class Administrador extends Personal {
 	private String cargo;
 
-	@Override
+	
 	public float calculoSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
+		float salario = 0;
+		salario=sueldo;
+		return salario;
 	}
 
 	public Administrador(String codigo, String nombre, float sueldo, String usuario, String contrasena, String cargo) {

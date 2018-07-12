@@ -3,10 +3,10 @@ package logico;
 public class Comercial extends Personal {
 	float comision;
 
-	@Override
 	public float calculoSueldo() {
-		// TODO Auto-generated method stub
-		return 0;
+		float salario=0;
+		salario=sueldo+comision;
+		return salario;
 	}
 
 	public Comercial(String codigo, String nombre, float sueldo, String usuario, String contrasena, float comision) {
@@ -18,8 +18,11 @@ public class Comercial extends Personal {
 		return comision;
 	}
 
-	public void setComision(float comision) {
-		this.comision = comision;
+	public float comision(float a) {
+		float comision=0;
+		comision=(float) (0.1*a);
+		return comision;
 	}
+
 
 }
