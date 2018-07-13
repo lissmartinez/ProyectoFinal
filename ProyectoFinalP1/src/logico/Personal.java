@@ -3,18 +3,18 @@ package logico;
 public abstract class Personal {
 	private String codigo;
 	private String nombre;
-	protected float sueldo;
+	protected float sueldobase;
 	private String usuario;
 	private String contrasena;
 	protected float pagoHoraExt;
 	protected int HoraExt;
 	
-	public Personal(String codigo, String nombre, float sueldo, String usuario, String contrasena, float pagoHoraExt,
+	public Personal(String codigo, String nombre, float sueldobase, String usuario, String contrasena, float pagoHoraExt,
 			int horaExt) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.sueldo = sueldo;
+		this.sueldobase = sueldobase;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 		this.pagoHoraExt = pagoHoraExt;
@@ -55,11 +55,11 @@ public abstract class Personal {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public float getSueldo() {
-		return sueldo;
+	public float getSueldobase() {
+		return sueldobase;
 	}
-	public void setSueldo(float sueldo) {
-		this.sueldo = sueldo;
+	public void setSueldobase(float sueldobase) {
+		this.sueldobase = sueldobase;
 	}
 	public String getUsuario() {
 		return usuario;
