@@ -6,10 +6,11 @@ import java.util.ArrayList;
 
 
 public class Empresa {
-	ArrayList<Cliente> clientes;
-	ArrayList<Personal> mistrabajadores;
-	ArrayList<Plan> planes;
-	ArrayList<Factura> misfacturas;
+	private ArrayList<Cliente> clientes;
+	private ArrayList<Personal> mistrabajadores;
+	private ArrayList<Plan> planes;
+	private ArrayList<Factura> misfacturas;
+	private ArrayList<Venta> misventas;
 	private static Empresa emp;
 	
 	public Empresa() {
@@ -18,6 +19,7 @@ public class Empresa {
 		this.mistrabajadores = new ArrayList<>();
 		this.planes = new ArrayList<>();
 		this.misfacturas = new ArrayList<>();
+		this.misventas = new ArrayList<>();
 	}
 	
 	public static Empresa getInstance(){
@@ -92,6 +94,13 @@ public Plan findplanbycode (String code) {
 
 	public void setMisfacturas(ArrayList<Factura> misfacturas) {
 		this.misfacturas = misfacturas;
+	}
+	public ArrayList<Venta> getMisventas() {
+		return misventas;
+	}
+
+	public void setMisventas(ArrayList<Venta> misventas) {
+		this.misventas = misventas;
 	}
 
 	public static Empresa getEmp() {

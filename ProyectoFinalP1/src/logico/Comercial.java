@@ -21,11 +21,15 @@ public class Comercial extends Personal {
 		return comision;
 	}
 
-	public float comision(float a) {
+	public void setComision(float comision) {
+		this.comision = comision;
+	}
+
+	/*public float comision(float a) {
 		float comision=0;
 		comision=(float) (0.1*a);
 		return comision;
-	}
+	}*/
 
 
 }
