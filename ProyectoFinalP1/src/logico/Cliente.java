@@ -10,8 +10,7 @@ public class Cliente {
 	private float cuentaxpagar;
 	ArrayList<Plan> misplanes;
 	
-	public Cliente(String codigo, String nombre, String telefono, boolean estado, float cuentaxpagar,
-			ArrayList<Plan> misplanes) {
+	public Cliente(String nombre, String telefono, String codigo, boolean estado, float cuantaxpagar, ArrayList<Plan> misplanes) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;

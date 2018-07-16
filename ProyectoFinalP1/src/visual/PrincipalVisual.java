@@ -7,12 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import logico.Plan;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class PrincipalVisual extends JFrame {
@@ -76,7 +77,17 @@ public class PrincipalVisual extends JFrame {
 		JMenuItem mntmRegistro_1 = new JMenuItem("Registro");
 		mntmRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				logico.Cliente cli = null;
+				RegistroClientes regCliente = null;
+				try {
+					regCliente = new RegistroClientes(cli);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				regCliente.setModal(true);
+				regCliente.setLocationRelativeTo(null);
+				regCliente.setVisible(true);
 			
 				
 			}
@@ -104,6 +115,21 @@ public class PrincipalVisual extends JFrame {
 		
 		JMenuItem mntmGenerarFactura = new JMenuItem("Generar factura");
 		mnFacturas.add(mntmGenerarFactura);
+		
+		JMenu mnPlanes = new JMenu("Planes");
+		menuBar.add(mnPlanes);
+		
+		JMenuItem mntmCrearPlan = new JMenuItem("Crear plan");
+		mntmCrearPlan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Plan pla = null;
+				CrearPlan crr = new CrearPlan(pla);
+				crr.setModal(true);
+				crr.setLocationRelativeTo(null);
+				crr.setVisible(true);
+			}
+		});
+		mnPlanes.add(mntmCrearPlan);
 	}
 	private static class __Tmp {
 		private static void __tmp() {

@@ -25,11 +25,4 @@ public class Comercial extends Personal {
 		this.comision = comision;
 	}
 
-	/*public float comision(float a) {
-		float comision=0;
-		comision=(float) (0.1*a);
-		return comision;
-	}*/
-
-
 }
