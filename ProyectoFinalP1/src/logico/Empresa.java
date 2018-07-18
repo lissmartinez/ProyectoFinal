@@ -63,6 +63,11 @@ public Plan findplanbycode (String code) {
 	 return aux;
  }
 	
+public void insertpersonal(Personal personal) {
+	// TODO Auto-generated method stub
+	mistrabajadores.add(personal);
+	
+}
 	
 	public ArrayList<Cliente> getClientes() {
 		return clientes;

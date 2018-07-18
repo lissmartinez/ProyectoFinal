@@ -5,13 +5,13 @@ public class Comercial extends Personal {
 
 	public float calculoSueldo() {
 		float salario=0;
-		salario=sueldobase+comision+(pagoHoraExt*HoraExt);
+		salario=sueldobase+comision;
 		return salario;
 	}
 
-	public Comercial(String codigo, String nombre, float sueldobase, String usuario, String contrasena, float pagoHoraExt,
-			int horaExt) {
-		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt, horaExt);
+	public Comercial(String codigo, String nombre, float sueldobase, String usuario, char[] contrasena, float pagoHoraExt
+			) {
+		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt);
 	
 	}
 

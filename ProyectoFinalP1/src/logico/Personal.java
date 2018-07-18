@@ -5,12 +5,14 @@ public abstract class Personal {
 	private String nombre;
 	protected float sueldobase;
 	private String usuario;
-	private String contrasena;
+	private char[] contrasena;
 	protected float pagoHoraExt;
-	protected int HoraExt;
+
 	
-	public Personal(String codigo, String nombre, float sueldobase, String usuario, String contrasena, float pagoHoraExt,
-			int horaExt) {
+
+
+	public Personal(String codigo, String nombre, float sueldobase, String usuario, char[] contrasena,
+			float pagoHoraExt) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -18,7 +20,7 @@ public abstract class Personal {
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 		this.pagoHoraExt = pagoHoraExt;
-		HoraExt = horaExt;
+		// TODO Auto-generated constructor stub
 	}
 
 
@@ -35,15 +37,7 @@ public abstract class Personal {
 	}
 
 
-	public int getHoraExt() {
-		return HoraExt;
-	}
-
-
-	public void setHoraExt(int horaExt) {
-		HoraExt = horaExt;
-	}
-
+	
 
 	public String getCodigo() {
 		return codigo;
@@ -67,10 +61,10 @@ public abstract class Personal {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContrasena() {
+	public char[] getContrasena() {
 		return contrasena;
 	}
-	public void setContrasena(String contrasena) {
+	public void setContrasena(char[] contrasena) {
 		this.contrasena = contrasena;
 	}
 

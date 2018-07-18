@@ -12,7 +12,7 @@ public class PrincipalLogico {
 	public static void main(String[] args) {
 	
 			
-			
+		/*	
 		
 		Plan plan1= new Plan("1", "triple play", "internet", 1500);
 		ArrayList<Plan> misplanes = new ArrayList<Plan>();
@@ -54,5 +54,7 @@ public class PrincipalLogico {
 		 
 		
 	}
-
-}
+/*
+ * 
+ */
+}}
