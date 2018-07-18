@@ -76,12 +76,12 @@ import javax.swing.JPasswordField;
 			
 			JPanel panel = new JPanel();
 			panel.setBorder(new TitledBorder(null, "Datos Del Empleado", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-			panel.setBounds(10, 31, 474, 180);
+			panel.setBounds(10, 33, 474, 180);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
 			JLabel lblRadio = new JLabel("Nombre:");
-			lblRadio.setBounds(10, 11, 60, 14);
+			lblRadio.setBounds(10, 11, 97, 14);
 			panel.add(lblRadio);
 			
 			textNombre = new JTextField();
@@ -100,7 +100,7 @@ import javax.swing.JPasswordField;
 			textcode.setColumns(10);
 			
 			JLabel lblUsuario = new JLabel("Usuario:");
-			lblUsuario.setBounds(10, 67, 46, 14);
+			lblUsuario.setBounds(10, 67, 83, 14);
 			panel.add(lblUsuario);
 			
 			textuser = new JTextField();
@@ -109,11 +109,11 @@ import javax.swing.JPasswordField;
 			textuser.setColumns(10);
 			
 			JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-			lblContrasea.setBounds(246, 67, 102, 14);
+			lblContrasea.setBounds(246, 67, 125, 14);
 			panel.add(lblContrasea);
 			
 			lblSueldoBase = new JLabel("Sueldo Base:");
-			lblSueldoBase.setBounds(10, 123, 102, 14);
+			lblSueldoBase.setBounds(10, 123, 133, 14);
 			panel.add(lblSueldoBase);
 			
 			textsueldo = new JTextField();
@@ -127,7 +127,7 @@ import javax.swing.JPasswordField;
 			texthext.setColumns(10);
 			
 			lblPagoPorHoras = new JLabel("Pago por horas extras:");
-			lblPagoPorHoras.setBounds(256, 123, 123, 14);
+			lblPagoPorHoras.setBounds(256, 123, 159, 14);
 			panel.add(lblPagoPorHoras);
 			
 			passwordField = new JPasswordField();
