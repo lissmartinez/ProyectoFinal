@@ -31,6 +31,7 @@ public class RegistroClientes extends JDialog {
 	private JTextField txtNombre;
 	private JFormattedTextField formattedTextField;
 	private static logico.Cliente cliente;
+	private JTextField textFieldnumber;
 
 	/**
 	 * Launch the application.
@@ -86,10 +87,12 @@ public class RegistroClientes extends JDialog {
 			lblTelefono.setBounds(10, 116, 86, 14);
 			panel.add(lblTelefono);
 			
+			textFieldnumber = new JTextField();
+			textFieldnumber.setBounds(10, 141, 179, 20);
+			panel.add(textFieldnumber);
+			textFieldnumber.setColumns(10);
 			MaskFormatter a = new MaskFormatter("(###)-###-####");
-			JFormattedTextField formattedTextField = new JFormattedTextField(a);
-			formattedTextField.setBounds(10, 134, 97, 20);
-			panel.add(formattedTextField);
+			
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -101,10 +104,10 @@ public class RegistroClientes extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(!txtNombre.getText().equalsIgnoreCase("")) {
 							String nombre = txtNombre.getText();
-							String telefono = formattedTextField.getText();
+							String telefono =  textFieldnumber.getText();
 							String codigo = txtCodigo.getText();
-						//	boolean estado = (Boolean) null;
-						//	float cuantaxpagar = (Float) null;
+						//boolean estado = (Boolean) null;
+						//float cuantaxpagar = (Float) null;
 							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
 							
 							Cliente aux = new Cliente(nombre, telefono, codigo, misplanes);
@@ -133,7 +136,7 @@ public class RegistroClientes extends JDialog {
 	private void clean() {
 		txtCodigo.setText("");
 		txtNombre.setText("");
-		formattedTextField.setText("");
+		textFieldnumber.setText("");
 		
 	}
 }
