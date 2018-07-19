@@ -9,23 +9,32 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logico.Empresa;
 import logico.Plan;
 
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class CrearPlan extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textFieldCodigo;
-	private JTextField textField;
-	private JTextField textField_1;
-	private static logico.Plan plan;
+	private JTextField txtcodigo;
+	private JTextField txtnombre;
+	private JTextField txtprecio;
+	private static Plan plan;
+	JRadioButton rdbtnInternet;
+	JRadioButton rdbtnTelefono;
+	JRadioButton rdbtnCable;
+	private JTextField txtcanales;
+	private JTextField txtminutos;
+	private JTextField txtinternet;
 
 	/**
 	 * Launch the application.
@@ -46,7 +55,7 @@ public class CrearPlan extends JDialog {
 	public CrearPlan(Plan pla) {
 		plan = pla;
 		setTitle("Registro de planes");
-		setBounds(100, 100, 401, 329);
+		setBounds(100, 100, 423, 494);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -62,56 +71,105 @@ public class CrearPlan extends JDialog {
 				panel.add(lblCodigo);
 			}
 			{
-				textFieldCodigo = new JTextField();
-				textFieldCodigo.setBounds(10, 39, 86, 20);
-				panel.add(textFieldCodigo);
-				textFieldCodigo.setColumns(10);
+				txtcodigo = new JTextField();
+				txtcodigo.setBounds(10, 39, 86, 20);
+				panel.add(txtcodigo);
+				txtcodigo.setColumns(10);
 			}
 			{
 				JLabel lblNewLabel = new JLabel("Nombre del plan:");
-				lblNewLabel.setBounds(123, 22, 107, 14);
+				lblNewLabel.setBounds(10, 76, 107, 14);
 				panel.add(lblNewLabel);
 			}
 			{
-				textField = new JTextField();
-				textField.setBounds(123, 39, 170, 20);
-				panel.add(textField);
-				textField.setColumns(10);
+				txtnombre = new JTextField();
+				txtnombre.setBounds(10, 93, 170, 20);
+				panel.add(txtnombre);
+				txtnombre.setColumns(10);
 			}
 			{
-				JPanel panel_1 = new JPanel();
-				panel_1.setLayout(null);
-				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Servicios", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panel_1.setBounds(10, 83, 119, 105);
-				panel.add(panel_1);
-				
-				JCheckBox chckbxInternet = new JCheckBox("Internet");
-				chckbxInternet.setBounds(6, 19, 97, 23);
-				panel_1.add(chckbxInternet);
-				
-				JCheckBox chckbxMinutos = new JCheckBox("Minutos");
-				chckbxMinutos.setBounds(6, 45, 97, 23);
-				panel_1.add(chckbxMinutos);
-				
-				JCheckBox chckbxNewCheckBox = new JCheckBox("TV");
-				chckbxNewCheckBox.setBounds(6, 71, 97, 23);
-				panel_1.add(chckbxNewCheckBox);
+				JPanel panel_servicios = new JPanel();
+				panel_servicios.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Servicios", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				panel_servicios.setBounds(10, 135, 352, 84);
+				panel.add(panel_servicios);
+				panel_servicios.setLayout(null);
+				{
+				    rdbtnInternet = new JRadioButton("Internet");
+				    rdbtnInternet.addActionListener(new ActionListener() {
+				    	public void actionPerformed(ActionEvent e) {
+				    		txtinternet.setEnabled(true);
+				    		
+				    	}
+				    });
+					rdbtnInternet.setBounds(6, 38, 109, 23);
+					panel_servicios.add(rdbtnInternet);
+				}
+				{
+					rdbtnTelefono = new JRadioButton("Telefono");
+					rdbtnTelefono.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							txtminutos.setEnabled(true);
+						}
+					});
+					rdbtnTelefono.setBounds(117, 38, 109, 23);
+					panel_servicios.add(rdbtnTelefono);
+				}
+				{
+					rdbtnCable = new JRadioButton("Cable");
+					rdbtnCable.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							txtcanales.setEnabled(true);
+						}
+					});
+					rdbtnCable.setBounds(238, 38, 109, 23);
+					panel_servicios.add(rdbtnCable);
+				}
 			}
 			
-			JPanel panel_2 = new JPanel();
-			panel_2.setBounds(139, 83, 224, 102);
-			panel.add(panel_2);
-			panel_2.setLayout(null);
-			panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Data", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			
-			JLabel lblPrecioTotal = new JLabel("Precio Total:");
-			lblPrecioTotal.setBounds(262, 190, 101, 14);
+			JLabel lblPrecioTotal = new JLabel("Precio:");
+			lblPrecioTotal.setBounds(11, 346, 101, 14);
 			panel.add(lblPrecioTotal);
 			
-			textField_1 = new JTextField();
-			textField_1.setBounds(261, 205, 102, 20);
-			panel.add(textField_1);
-			textField_1.setColumns(10);
+			txtprecio = new JTextField();
+			txtprecio.setBounds(10, 361, 102, 20);
+			panel.add(txtprecio);
+			txtprecio.setColumns(10);
+			
+			JPanel panel_data = new JPanel();
+			panel_data.setLayout(null);
+			panel_data.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel_data.setBounds(10, 230, 352, 105);
+			panel.add(panel_data);
+			
+			JLabel lblCantidadDeGb_1 = new JLabel("Data (MB):");
+			lblCantidadDeGb_1.setBounds(10, 32, 69, 14);
+			panel_data.add(lblCantidadDeGb_1);
+			
+			txtinternet = new JTextField();
+			txtinternet.setEnabled(false);
+			txtinternet.setColumns(10);
+			txtinternet.setBounds(10, 57, 69, 20);
+			panel_data.add(txtinternet);
+			
+			JLabel lblCantidadDeGb = new JLabel("Canales:");
+			lblCantidadDeGb.setBounds(245, 32, 69, 14);
+			panel_data.add(lblCantidadDeGb);
+			
+			txtcanales = new JTextField();
+			txtcanales.setEnabled(false);
+			txtcanales.setBounds(245, 57, 69, 20);
+			panel_data.add(txtcanales);
+			txtcanales.setColumns(10);
+			
+			JLabel lblCantidadDeMinutos = new JLabel("Minutos:");
+			lblCantidadDeMinutos.setBounds(120, 32, 69, 14);
+			panel_data.add(lblCantidadDeMinutos);
+			
+			txtminutos = new JTextField();
+			txtminutos.setEnabled(false);
+			txtminutos.setBounds(120, 57, 69, 20);
+			panel_data.add(txtminutos);
+			txtminutos.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -119,6 +177,32 @@ public class CrearPlan extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Crear");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Plan aux=null;
+						
+						String codigo= txtcodigo.getText();
+						String nombre= txtnombre.getText();
+						int precio = new Integer(txtprecio.getText());
+						
+						if(rdbtnInternet.isSelected()){
+							int cantData = new Integer(txtinternet.getText());
+						//	aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
+							Empresa.getInstance().insertPlan(aux);
+						}
+						if(rdbtnTelefono.isSelected()){
+							int cantMinutos= new Integer(txtminutos.getText());
+						//	aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
+							Empresa.getInstance().insertPlan(aux);
+						}
+						if(rdbtnCable.isSelected()){
+							int cantCanales= new Integer(txtcanales.getText());
+							//aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
+							Empresa.getInstance().insertPlan(aux);
+						}
+						
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

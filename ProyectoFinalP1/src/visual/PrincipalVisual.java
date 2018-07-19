@@ -83,7 +83,7 @@ private Personal aux;
 				logico.Cliente cli = null;
 				RegistroClientes regCliente = null;
 				try {
-					regCliente = new RegistroClientes(cli);
+					regCliente = new RegistroClientes(0, cli);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -101,6 +101,13 @@ private Personal aux;
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmRealizarContrato = new JMenuItem("Realizar contrato");
+		mntmRealizarContrato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentaPlan vplan = new VentaPlan();
+				vplan.setModal(true);
+				vplan.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmRealizarContrato);
 		
 		JMenu mnFacturas = new JMenu("Facturas");

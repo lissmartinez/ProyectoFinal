@@ -3,6 +3,9 @@ package logico;
 
 import java.util.ArrayList;
 
+import logico.Plan;
+import logico.Cliente;
+
 
 
 public class Empresa {
@@ -29,6 +32,13 @@ public class Empresa {
 		 
 		 return emp;
 	} 
+	
+	public void insertCliente(Cliente aux){
+		clientes.add(aux);
+	}
+	public void insertPlan(Plan aux){
+		planes.add(aux);
+	}
 
 
 public Cliente findclientbycode (String code) {

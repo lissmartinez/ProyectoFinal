@@ -12,7 +12,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
+
 import logico.Cliente;
+import logico.Empresa;
 import logico.Plan;
 
 import javax.swing.JLabel;
@@ -25,14 +27,15 @@ import java.awt.event.ActionEvent;
 public class RegistroClientes extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtCodigo;
+	private JTextField txtNombre;
 	private JFormattedTextField formattedTextField;
 	private static logico.Cliente cliente;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			RegistroClientes dialog = new RegistroClientes(cliente);
@@ -42,15 +45,15 @@ public class RegistroClientes extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	/**
 	 * Create the dialog.
 	 * @throws ParseException 
 	 */
-	public RegistroClientes(Cliente cli) throws ParseException {
+	public RegistroClientes(final int code, Cliente cli) throws ParseException {
 		cliente = cli;
 		setTitle("Registro de clientes");
-		setBounds(100, 100, 237, 249);
+		setBounds(100, 100, 259, 261);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -65,19 +68,19 @@ public class RegistroClientes extends JDialog {
 			lblCodigo.setBounds(10, 21, 79, 14);
 			panel.add(lblCodigo);
 			
-			textField = new JTextField();
-			textField.setBounds(10, 39, 86, 20);
-			panel.add(textField);
-			textField.setColumns(10);
+			txtCodigo = new JTextField();
+			txtCodigo.setBounds(10, 39, 86, 20);
+			panel.add(txtCodigo);
+			txtCodigo.setColumns(10);
 			
 			JLabel lblNombre = new JLabel("Nombre:");
 			lblNombre.setBounds(10, 70, 79, 14);
 			panel.add(lblNombre);
 			
-			textField_1 = new JTextField();
-			textField_1.setBounds(10, 88, 179, 20);
-			panel.add(textField_1);
-			textField_1.setColumns(10);
+			txtNombre = new JTextField();
+			txtNombre.setBounds(10, 88, 179, 20);
+			panel.add(txtNombre);
+			txtNombre.setColumns(10);
 			
 			JLabel lblTelefono = new JLabel("Telefono:");
 			lblTelefono.setBounds(10, 116, 86, 14);
@@ -85,7 +88,7 @@ public class RegistroClientes extends JDialog {
 			
 			MaskFormatter a = new MaskFormatter("(###)-###-####");
 			JFormattedTextField formattedTextField = new JFormattedTextField(a);
-			formattedTextField.setBounds(10, 134, 86, 20);
+			formattedTextField.setBounds(10, 134, 97, 20);
 			panel.add(formattedTextField);
 		}
 		{
@@ -96,16 +99,17 @@ public class RegistroClientes extends JDialog {
 				JButton okButton = new JButton("Registrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(!textField_1.getText().equalsIgnoreCase("")) {
-							String nombre = textField_1.getText();
-							String codigo = textField.getText();
-							boolean estado = (Boolean) null;
-							float cuantaxpagar = (Float) null;
-							ArrayList<Plan> misplanes = null;
+						if(!txtNombre.getText().equalsIgnoreCase("")) {
+							String nombre = txtNombre.getText();
 							String telefono = formattedTextField.getText();
-							logico.Cliente aux = new logico.Cliente(nombre, telefono, codigo, estado, cuantaxpagar, misplanes);
+							String codigo = txtCodigo.getText();
+						//	boolean estado = (Boolean) null;
+						//	float cuantaxpagar = (Float) null;
+							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
+							
+							Cliente aux = new Cliente(nombre, telefono, codigo, misplanes);
+							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-							logico.Empresa.getInstance().getClientes().add(aux);
 							clean();
 							}else {JOptionPane.showMessageDialog(null, "No se puede registrar el cliente, llene los datos faltantes", "Información", JOptionPane.INFORMATION_MESSAGE);}
 					}
@@ -127,8 +131,9 @@ public class RegistroClientes extends JDialog {
 		}
 	}
 	private void clean() {
-		textField.setText("");
-		textField_1.setText("");
+		txtCodigo.setText("");
+		txtNombre.setText("");
+		formattedTextField.setText("");
 		
 	}
 }
