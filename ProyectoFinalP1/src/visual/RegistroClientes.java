@@ -51,10 +51,10 @@ public class RegistroClientes extends JDialog {
 	 * Create the dialog.
 	 * @throws ParseException 
 	 */
-	public RegistroClientes(final int code, Cliente cli) {
+	public RegistroClientes(Cliente cli) {
 		cliente = cli;
 		setTitle("Registro de clientes");
-		setBounds(100, 100, 259, 261);
+		setBounds(100, 100, 248, 261);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -71,6 +71,7 @@ public class RegistroClientes extends JDialog {
 			
 			txtCodigo = new JTextField();
 			txtCodigo.setBounds(10, 39, 86, 20);
+			txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			
@@ -110,7 +111,7 @@ public class RegistroClientes extends JDialog {
 						//float cuantaxpagar = (Float) null;
 							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
 							
-							Cliente aux = new Cliente(nombre, telefono, codigo, misplanes);
+							Cliente cli = new Cliente(nombre, telefono, codigo, misplanes);
 							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
@@ -134,7 +135,7 @@ public class RegistroClientes extends JDialog {
 		}
 	}
 	private void clean() {
-		txtCodigo.setText("");
+		txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 		txtNombre.setText("");
 		textFieldnumber.setText("");
 		

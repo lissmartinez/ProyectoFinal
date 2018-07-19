@@ -23,7 +23,9 @@ public class Cliente {
 	public String getCodigo() {
 		return codigo;
 	}
-
+	public String setCodigo() {
+		return codigo;
+	}
 	public String getNombre() {
 		return nombre;
 	}

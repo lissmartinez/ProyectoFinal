@@ -16,6 +16,7 @@ import javax.swing.border.TitledBorder;
 import logico.Cliente;
 import logico.Empresa;
 
+
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JScrollPane;
@@ -24,10 +25,12 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class VentaPlan extends JDialog {
 
@@ -50,7 +53,6 @@ public class VentaPlan extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	/*
 	public static void main(String[] args) {
 		try {
 			VentaPlan dialog = new VentaPlan();
@@ -60,7 +62,7 @@ public class VentaPlan extends JDialog {
 			e.printStackTrace();
 		}
 	}
-*/
+
 	/**
 	 * Create the dialog.
 	 */
@@ -89,7 +91,9 @@ public class VentaPlan extends JDialog {
 				txtcodigo.setBounds(10, 30, 86, 20);
 				panel.add(txtcodigo);
 				txtcodigo.setColumns(10);
+				txtcodigo.setText(date()+"-"+(Empresa.getInstance().getMisventas().size()+1));
 			}
+			
 			{
 				JPanel panel_1 = new JPanel();
 				panel_1.setBorder(new TitledBorder(null, "Informacion del cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -109,6 +113,14 @@ public class VentaPlan extends JDialog {
 				}
 				
 				btnBuscar = new JButton("Buscar");
+				btnBuscar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						
+						
+						
+					}
+				});
 				btnBuscar.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -120,7 +132,7 @@ public class VentaPlan extends JDialog {
 					    if (delete == JOptionPane.YES_OPTION)
 					    {
 							txtcodecliente.setText("");
-							RegistroClientes regC = new RegistroClientes(0, aux);
+							RegistroClientes regC = new RegistroClientes( aux);
 							regC.setModal(true);
 							regC.setLocationRelativeTo(null);
 							regC.setVisible(true);
@@ -128,6 +140,7 @@ public class VentaPlan extends JDialog {
 					    }	
 					}else{
 					
+						
 						txtnombre.setText(aux.getNombre());
 						txttelefono.setText(aux.getTelefono());
 						
@@ -295,5 +308,10 @@ public class VentaPlan extends JDialog {
 				buttonPane.add(btnSalir);
 			}
 		}
+	}
+	public String date(){
+		Date fecha = new Date();
+		SimpleDateFormat formatfecha =new SimpleDateFormat("YYYYMMDD");
+		return formatfecha.format(fecha);
 	}
 }

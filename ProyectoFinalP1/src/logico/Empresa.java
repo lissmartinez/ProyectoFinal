@@ -41,7 +41,8 @@ public class Empresa {
 	}
 
 
-public Cliente findclientbycode (String code) {
+
+public Cliente findclientbycode(String code) {
 	// TODO Auto-generated method stub
 	 Cliente aux = null;
 	 boolean find = false;
@@ -49,15 +50,14 @@ public Cliente findclientbycode (String code) {
 	 while( i < clientes.size() && !find){
 		 if(clientes.get(i).getCodigo().equalsIgnoreCase(code))
 		 {
-			
-			 aux = clientes.get(i);
 			 find = true;
+			 aux = clientes.get(i);
 		  }
 		 i++;
 		 }
 	 return aux;
  }
-	
+
 public Plan findplanbycode (String code) {
 	// TODO Auto-generated method stub
 	 Plan aux = null;
