@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import logico.Cliente;
 import logico.Personal;
 import logico.Plan;
 
@@ -80,14 +81,9 @@ private Personal aux;
 		JMenuItem mntmRegistro_1 = new JMenuItem("Registro");
 		mntmRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				logico.Cliente cli = null;
+				Cliente cli = null;
 				RegistroClientes regCliente = null;
-				try {
 					regCliente = new RegistroClientes(0, cli);
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				regCliente.setModal(true);
 				regCliente.setLocationRelativeTo(null);
 				regCliente.setVisible(true);

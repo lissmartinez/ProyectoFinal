@@ -50,6 +50,7 @@ public class VentaPlan extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			VentaPlan dialog = new VentaPlan();
@@ -59,7 +60,7 @@ public class VentaPlan extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	/**
 	 * Create the dialog.
 	 */
@@ -119,13 +120,7 @@ public class VentaPlan extends JDialog {
 					    if (delete == JOptionPane.YES_OPTION)
 					    {
 							txtcodecliente.setText("");
-							RegistroClientes regC = null;
-							try {
-								regC = new RegistroClientes(0, aux);
-							} catch (ParseException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							RegistroClientes regC = new RegistroClientes(0, aux);
 							regC.setModal(true);
 							regC.setLocationRelativeTo(null);
 							regC.setVisible(true);

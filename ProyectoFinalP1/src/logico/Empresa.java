@@ -49,8 +49,9 @@ public Cliente findclientbycode (String code) {
 	 while( i < clientes.size() && !find){
 		 if(clientes.get(i).getCodigo().equalsIgnoreCase(code))
 		 {
-			 find = true;
+			
 			 aux = clientes.get(i);
+			 find = true;
 		  }
 		 i++;
 		 }

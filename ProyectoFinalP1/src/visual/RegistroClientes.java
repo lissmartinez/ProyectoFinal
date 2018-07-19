@@ -30,7 +30,7 @@ public class RegistroClientes extends JDialog {
 	private JTextField txtCodigo;
 	private JTextField txtNombre;
 	private JFormattedTextField formattedTextField;
-	private static logico.Cliente cliente;
+	private static Cliente cliente;
 	private JTextField textFieldnumber;
 
 	/**
@@ -51,7 +51,7 @@ public class RegistroClientes extends JDialog {
 	 * Create the dialog.
 	 * @throws ParseException 
 	 */
-	public RegistroClientes(final int code, Cliente cli) throws ParseException {
+	public RegistroClientes(final int code, Cliente cli) {
 		cliente = cli;
 		setTitle("Registro de clientes");
 		setBounds(100, 100, 259, 261);
@@ -91,7 +91,7 @@ public class RegistroClientes extends JDialog {
 			textFieldnumber.setBounds(10, 141, 179, 20);
 			panel.add(textFieldnumber);
 			textFieldnumber.setColumns(10);
-			MaskFormatter a = new MaskFormatter("(###)-###-####");
+			//MaskFormatter a = new MaskFormatter("(###)-###-####");
 			
 		}
 		{
