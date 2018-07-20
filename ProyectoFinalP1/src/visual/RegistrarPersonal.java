@@ -33,6 +33,8 @@ import javax.swing.JLabel;
 	import javax.swing.SpinnerNumberModel;
 	import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 	public class RegistrarPersonal extends JDialog {
 
@@ -57,8 +59,8 @@ import javax.swing.JPasswordField;
 		private JTextField textsueldo;
 		private JTextField texthext;
 		private JLabel lblPagoPorHoras;
-		private JTextField textcargo;
 		private JPasswordField passwordField;
+		private JComboBox comboBoxCargo;
 
 		
 		public RegistrarPersonal( Personal aux) {
@@ -117,12 +119,12 @@ import javax.swing.JPasswordField;
 			panel.add(lblSueldoBase);
 			
 			textsueldo = new JTextField();
-			textsueldo.setBounds(10, 149, 123, 20);
+			textsueldo.setBounds(10, 149, 209, 20);
 			panel.add(textsueldo);
 			textsueldo.setColumns(10);
 			
 			texthext = new JTextField();
-			texthext.setBounds(246, 149, 125, 20);
+			texthext.setBounds(246, 149, 197, 20);
 			panel.add(texthext);
 			texthext.setColumns(10);
 			
@@ -170,19 +172,19 @@ import javax.swing.JPasswordField;
 			contentPanel.add(panel_3);
 			panel_3.setLayout(null);
 			
-			lblCargo = new JLabel("Cargo:");
-			lblCargo.setBounds(10, 20, 40, 14);
-			panel_3.add(lblCargo);
-			
-			textcargo = new JTextField();
-			textcargo.setBounds(63, 17, 172, 20);
-			panel_3.add(textcargo);
-			textcargo.setColumns(10);
-			
 			panel_2 = new JPanel();
 			panel_2.setBounds(0, 0, 474, 55);
 			panel_3.add(panel_2);
 			panel_2.setLayout(null);
+			
+			comboBoxCargo = new JComboBox();
+			comboBoxCargo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Secretaria ", "Recursos Humanos", "Auditor ", "Director Ejecutivo"}));
+			comboBoxCargo.setBounds(50, 24, 186, 20);
+			panel_2.add(comboBoxCargo);
+			
+			lblCargo = new JLabel("Cargo:");
+			lblCargo.setBounds(10, 27, 40, 14);
+			panel_2.add(lblCargo);
 			{
 				JPanel buttonPane = new JPanel();
 				buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -205,7 +207,7 @@ import javax.swing.JPasswordField;
 							
 							
 							if(rdbtnAdm.isSelected()){
-								String cargo = textcargo.getText();
+								String cargo = comboBoxCargo.getSelectedItem().toString();
 								aux1 = new Administrador(codigo,nombre,sueldobase, usuario, contrasena, pagoHoraExt, cargo );
 								
 							}
@@ -251,7 +253,7 @@ import javax.swing.JPasswordField;
 			private void clear() {
 			
 				textNombre.setText("");
-				textcargo.setText("");
+				comboBoxCargo.setSelectedIndex(0);
 				texthext.setText("");
 				passwordField.setText("");
 				textsueldo.setText("");
