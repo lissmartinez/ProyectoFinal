@@ -210,7 +210,7 @@ public class CrearPlan extends JDialog {
 						aux = new Plan(codigo, nombre, internet, telefono, cable, precio, cantData, cantMinutos, cantCanales);
 						Empresa.getInstance().insertPlan(aux);
 						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-						//clean();
+						clean();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -228,5 +228,16 @@ public class CrearPlan extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public void clean() {
+		txtcodigo.setText("");
+		txtcanales.setText("");
+		txtprecio.setText("");
+		txtinternet.setText("");
+		txtminutos.setText("");
+		txtnombre.setText("");
+		rdbtnCable.setSelected(false);
+		rdbtnInternet.setSelected(false);
+		rdbtnTelefono.setSelected(false);
 	}
 }

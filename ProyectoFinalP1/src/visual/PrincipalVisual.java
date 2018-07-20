@@ -46,6 +46,7 @@ private Personal aux;
 	 * Create the frame.
 	 */
 	public PrincipalVisual() {
+		setTitle("Gravity Comunications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 603, 527);
 		contentPane = new JPanel();
@@ -75,6 +76,17 @@ private Personal aux;
 		});
 		mnProductos.add(mntmRegistro);
 		
+		JMenuItem mntmListaDeEmpledos = new JMenuItem("Lista de Empleados");
+		mntmListaDeEmpledos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEmpleados listaEmpleados = new ListaEmpleados();
+				listaEmpleados.setModal(true);
+				listaEmpleados.setLocationRelativeTo(null);
+				listaEmpleados.setVisible(true);
+			}
+		});
+		mnProductos.add(mntmListaDeEmpledos);
+		
 		JMenu mnClientes = new JMenu("Clientes");
 		menuBar.add(mnClientes);
 		
@@ -92,6 +104,17 @@ private Personal aux;
 			}
 		});
 		mnClientes.add(mntmRegistro_1);
+		
+		JMenuItem mntmListaDeClientes = new JMenuItem("Lista de Clientes");
+		mntmListaDeClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaClientes listaClientes = new ListaClientes();
+				listaClientes.setModal(true);
+				listaClientes.setLocationRelativeTo(null);
+				listaClientes.setVisible(true);
+			}
+		});
+		mnClientes.add(mntmListaDeClientes);
 		
 		JMenu mnNewMenu = new JMenu("Contrato");
 		menuBar.add(mnNewMenu);

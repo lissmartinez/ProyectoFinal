@@ -65,7 +65,7 @@ import javax.swing.JPasswordField;
 			aux1=aux;
 			
 			if(aux== null){
-				setTitle("Registro de Clientes");
+				setTitle("Registro de Empleados");
 			}
 			
 			setBounds(100, 100, 534, 448);

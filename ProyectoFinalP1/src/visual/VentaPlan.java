@@ -249,6 +249,11 @@ public class VentaPlan extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						clean();
+					}
+				});
 				btnRegistrar.setActionCommand("OK");
 				buttonPane.add(btnRegistrar);
 				getRootPane().setDefaultButton(btnRegistrar);
@@ -302,5 +307,10 @@ public class VentaPlan extends JDialog {
 		jlistdisponible.setModel(planDisponible);
 		
 		
+	}
+	public void clean() {
+		txtcodecliente.setText("");
+		txtnombre.setText("");
+		txttelefono.setText("");
 	}
 }
