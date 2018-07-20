@@ -185,23 +185,32 @@ public class CrearPlan extends JDialog {
 						String codigo= txtcodigo.getText();
 						String nombre= txtnombre.getText();
 						int precio = new Integer(txtprecio.getText());
+						int cantData = 0;
+						int cantMinutos=0;
+						int cantCanales=0;
+						boolean internet = false;
+						boolean cable = false;
+						boolean telefono = false;
 						
 						if(rdbtnInternet.isSelected()){
-							int cantData = new Integer(txtinternet.getText());
-						//	aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
-							Empresa.getInstance().insertPlan(aux);
+							
+							cantData = new Integer(txtinternet.getText());
+							internet = true;
+						
 						}
 						if(rdbtnTelefono.isSelected()){
-							int cantMinutos= new Integer(txtminutos.getText());
-						//	aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
-							Empresa.getInstance().insertPlan(aux);
+							cantMinutos= new Integer(txtminutos.getText());
+						    telefono = true;
 						}
 						if(rdbtnCable.isSelected()){
-							int cantCanales= new Integer(txtcanales.getText());
-							//aux = new Plan(codigo, nombre, precio, cantData, cantMinutos, cantCanales);
-							Empresa.getInstance().insertPlan(aux);
+							cantCanales= new Integer(txtcanales.getText());
+							cable = true;
+							
 						}
-						
+						aux = new Plan(codigo, nombre, internet, telefono, cable, precio, cantData, cantMinutos, cantCanales);
+						Empresa.getInstance().insertPlan(aux);
+						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+						//clean();
 					}
 				});
 				okButton.setActionCommand("OK");

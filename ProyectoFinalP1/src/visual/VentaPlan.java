@@ -1,36 +1,33 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import logico.Cliente;
 import logico.Empresa;
-
-
-import javax.swing.UIManager;
-import java.awt.Color;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Date;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import logico.Plan;
 
 public class VentaPlan extends JDialog {
 
@@ -44,8 +41,8 @@ public class VentaPlan extends JDialog {
 	private JList jlistdisponible;
 	private ArrayList<String> listaDisponible;
 	private ArrayList<String> listaCarrito;
-	private DefaultListModel<String> plan;
-	private DefaultListModel<String> planacontratar;
+	private DefaultListModel<String> planDisponible;
+	private DefaultListModel<String> planContratar;
 	private JButton btnSelect;
 	private JButton btnUnselect;
 	private JButton btnBuscar;
@@ -79,8 +76,8 @@ public class VentaPlan extends JDialog {
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
-			plan = new DefaultListModel<String>();
-			planacontratar = new DefaultListModel<String>();
+			planDisponible = new DefaultListModel<String>();
+			planContratar = new DefaultListModel<String>();
 			{
 				JLabel lblCodigo = new JLabel("Codigo:");
 				lblCodigo.setBounds(10, 11, 67, 14);
@@ -192,7 +189,7 @@ public class VentaPlan extends JDialog {
 				}
 			});
 			jlistdisponible.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			jlistdisponible.setModel(plan);
+			jlistdisponible.setModel(planDisponible);
 			scrollPane.setColumnHeaderView(jlistdisponible);
 			
 			btnSelect = new JButton("Select");
@@ -201,30 +198,10 @@ public class VentaPlan extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					listaCarrito.add(code);
 					loadListadeCompra();
-					listaDisponible.remove(code);
-					loadListaDisponible();
 					btnSelect.setEnabled(false);
 				}
 
-				private void loadListaDisponible() {
-					jlistdisponible.removeAll();
-					plan.removeAllElements();
-					for (String nombre : listaDisponible) {
-						plan.addElement(nombre);
-					}
-					jlistdisponible.setModel(plan);
-					
-				}
 
-				private void loadListadeCompra() {
-					jlistcarrito.removeAll();
-					planacontratar.removeAllElements();
-					for (String nombre : listaCarrito) {
-						planacontratar.addElement(nombre);
-					}
-					jlistcarrito.setModel(planacontratar);
-					
-				}
 			});
 			btnSelect.setBounds(220, 264, 86, 23);
 			panel.add(btnSelect);
@@ -232,33 +209,12 @@ public class VentaPlan extends JDialog {
 			btnUnselect = new JButton("Unselect");
 			btnUnselect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					listaDisponible.add(code);
-					loadListaDisponible();
 					listaCarrito.remove(code);
 					loadListadeCompra();
 					btnUnselect.setEnabled(false);
 				}
 
-				private void loadListadeCompra() {
-					jlistcarrito.removeAll();
-					planacontratar.removeAllElements();
-					for (String nombre : listaCarrito) {
-						planacontratar.addElement(nombre);
-					}
-					jlistcarrito.setModel(plan);
-					
-				}
-
-				private void loadListaDisponible() {
-					jlistdisponible.removeAll();
-					plan.removeAllElements();
-					for (String nombre : listaDisponible) {
-						plan.addElement(nombre);
-					}
-					jlistdisponible.setModel(plan);
-					
-					
-				}
+			
 			});
 			btnUnselect.setEnabled(false);
 			btnUnselect.setBounds(220, 306, 86, 23);
@@ -284,7 +240,7 @@ public class VentaPlan extends JDialog {
 				}
 			});
 			jlistcarrito.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			jlistcarrito.setModel(planacontratar);
+			jlistcarrito.setModel(planContratar);
 			scrollPane_1.setViewportView(jlistcarrito);
 		}
 		{
@@ -308,10 +264,43 @@ public class VentaPlan extends JDialog {
 				buttonPane.add(btnSalir);
 			}
 		}
+		loadPlanesToSale();
+		loadListaDisponible();
 	}
+	
 	public String date(){
 		Date fecha = new Date();
 		SimpleDateFormat formatfecha =new SimpleDateFormat("YYYYMMDD");
 		return formatfecha.format(fecha);
+	}
+	
+	private void loadPlanesToSale() {
+		for (Plan aux : Empresa.getInstance().getPlanes()){
+			listaDisponible.add(aux.getCodigo()+"-"+aux.getNombre()+"-$"+aux.getPrecio());
+
+		}
+		
+	}
+	
+
+	private void loadListadeCompra() {
+		jlistcarrito.removeAll();
+		planContratar.removeAllElements();
+		for (String nombre : listaCarrito) {
+			planContratar.addElement(nombre);
+		}
+		jlistcarrito.setModel(planContratar);
+		
+	}
+
+	private void loadListaDisponible() {
+		jlistdisponible.removeAll();
+		planDisponible.removeAllElements();
+		for (String nombre : listaDisponible) {
+			planDisponible.addElement(nombre);
+		}
+		jlistdisponible.setModel(planDisponible);
+		
+		
 	}
 }

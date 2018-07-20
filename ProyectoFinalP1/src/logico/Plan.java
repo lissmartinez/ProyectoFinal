@@ -3,17 +3,21 @@ package logico;
 public class Plan {
 	private String codigo;
 	private String nombre;
-	//private String servicio;
+	private boolean internet;
+	private boolean telefono;
+	private boolean cable;
 	private int cantData;
 	private int cantMinutos;
 	private int cantCanales;
 	private float precio;
 	
-	public Plan(String codigo, String nombre, float precio, int cantData, int cantMinutos, int cantCanales) {
+	public Plan(String codigo, String nombre, boolean internet, boolean telefono, boolean cable, float precio, int cantData, int cantMinutos, int cantCanales) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
-		//this.servicio = servicio;
+		this.internet = internet;
+		this.telefono = telefono;
+		this.cable =cable;
 		this.cantData = cantData;
 		this.cantMinutos = cantMinutos;
 		this.cantCanales = cantCanales;
@@ -30,12 +34,6 @@ public class Plan {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	/*public String getServicio() {
-		return servicio;
-	}
-	public void setServicio(String servicio) {
-		this.servicio = servicio;
-	}*/
 	public int getCantData() {
 		return cantData;
 	}
@@ -65,6 +63,30 @@ public class Plan {
 	}
 	public void setPrecio(float precio) {
 		this.precio = precio;
+	}
+
+	public boolean getInternet() {
+		return internet;
+	}
+
+	public void setInternet(boolean internet) {
+		this.internet = internet;
+	}
+
+	public boolean getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(boolean telefono) {
+		this.telefono = telefono;
+	}
+
+	public boolean getCable() {
+		return cable;
+	}
+
+	public void setCable(boolean cable) {
+		this.cable = cable;
 	}
 
 }
