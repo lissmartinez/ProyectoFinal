@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -31,22 +32,7 @@ public class ListaEmpleados extends JDialog {
 	private JButton btnEliminar;
 	private String identificador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			ListaEmpleados dialog = new ListaEmpleados();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
+	
 	public ListaEmpleados() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -65,6 +51,12 @@ public class ListaEmpleados extends JDialog {
 					table.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()>=0){
+								btnEliminar.setEnabled(true);
+								btnModificar.setEnabled(true);
+								int index = table.getSelectedRow();
+								identificador = (String)table.getModel().getValueAt(index, 0);
+						}
 						}
 					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -86,12 +78,17 @@ public class ListaEmpleados extends JDialog {
 				btnModificar.setEnabled(false);
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(table.getSelectedRow()>=0){
-							btnEliminar.setEnabled(true);
-							btnModificar.setEnabled(true);
-							int index = table.getSelectedRow();
-							identificador = (String)table.getModel().getValueAt(index, 0);				
-						}
+						/*if(table.getSelectedRow()>=0){
+							Personal aux = Empresa.getInstance().findpersonalbycode(identificador);
+							logico.Empresa.getInstance().getClientes().remove(aux);
+							RegistrarPersonal regpersonal = new RegistrarPersonal(aux);
+							regclient.setModal(true);
+							regclient.setVisible(true);
+					
+							 btnEliminar.setEnabled(false);
+							 btnModificar.setEnabled(false);
+							 loadTable();				
+						}*/
 					}
 				});
 				buttonPane.add(btnModificar);
@@ -101,7 +98,16 @@ public class ListaEmpleados extends JDialog {
 				btnModificar.setEnabled(false);
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						Personal aux = Empresa.getInstance().findpersonalbycode(identificador);
+						int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el empleado: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
+						   if(option == JOptionPane.OK_OPTION){
+							Empresa.getInstance().getMistrabajadores().remove(aux);
+						    loadTable();
+						    btnEliminar.setEnabled(false);
+						    btnModificar.setEnabled(false);
 					}
+					}
+				
 				});
 				btnEliminar.setActionCommand("OK");
 				buttonPane.add(btnEliminar);

@@ -81,7 +81,7 @@ import javax.swing.JPasswordField;
 			panel.setLayout(null);
 			
 			JLabel lblRadio = new JLabel("Nombre:");
-			lblRadio.setBounds(10, 11, 97, 14);
+			lblRadio.setBounds(10, 21, 97, 14);
 			panel.add(lblRadio);
 			
 			textNombre = new JTextField();
@@ -90,7 +90,7 @@ import javax.swing.JPasswordField;
 			textNombre.setColumns(10);
 			
 			lblCodigo = new JLabel("Codigo:");
-			lblCodigo.setBounds(246, 11, 46, 14);
+			lblCodigo.setBounds(246, 21, 46, 14);
 			panel.add(lblCodigo);
 			
 			textcode = new JTextField();

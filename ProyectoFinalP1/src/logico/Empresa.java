@@ -57,6 +57,21 @@ public Cliente findclientbycode(String code) {
 		 }
 	 return aux;
  }
+public Personal findpersonalbycode (String code) {
+	// TODO Auto-generated method stub
+	 Personal aux = null;
+	 boolean find = false;
+	 int i = 0;
+	 while( i < mistrabajadores.size() && !find){
+		 if(mistrabajadores.get(i).getCodigo().equalsIgnoreCase(code))
+		 {
+			 find = true;
+			 aux = mistrabajadores.get(i);
+		  }
+		 i++;
+		 }
+	 return aux;
+ }
 
 public Plan findplanbycode (String code) {
 	// TODO Auto-generated method stub
