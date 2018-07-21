@@ -50,8 +50,26 @@ public Cliente findclientbycode(String code) {
 	 while( i < clientes.size() && !find){
 		 if(clientes.get(i).getCodigo().equalsIgnoreCase(code))
 		 {
-			 find = true;
 			 aux = clientes.get(i);
+			 find = true;
+			 
+		  }
+		 i++;
+		 }
+	 return aux;
+ }
+
+public Cliente findclientbycedula(String cedula) {
+	// TODO Auto-generated method stub
+	 Cliente aux = null;
+	 boolean find = false;
+	 int i = 0;
+	 while( i < clientes.size() && !find){
+		 if(clientes.get(i).getCedula().equalsIgnoreCase(cedula))
+		 {
+			 aux = clientes.get(i);
+			 find = true;
+			 
 		  }
 		 i++;
 		 }

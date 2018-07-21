@@ -11,7 +11,7 @@ public class Cliente {
 	ArrayList<Plan> misplanes;
 	ArrayList<Factura>  misfacturas;
 	private String cedula;
-	private 	String direccion;
+	private String direccion;
 	
 	
 

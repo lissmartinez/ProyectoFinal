@@ -2,6 +2,7 @@ package logico;
 
 import java.util.ArrayList;
 
+
 public class Venta {
 	private String codigo;
 	private Cliente cli;
@@ -65,6 +66,15 @@ public class Venta {
 		this.comerciante = comerciante;
 	}
 	
+	public float Pago(){
+		float precioPagar=0;
+		
+		for (Plan plan : planes) {
+			precioPagar+=plan.getPrecio();
+		}
+		
+		return precioPagar;
+	}
 	
 
 }

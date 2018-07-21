@@ -25,6 +25,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+
 import logico.Cliente;
 import logico.Empresa;
 import logico.Factura;
@@ -72,7 +73,7 @@ public class VentaPlan extends JDialog {
 		listaDisponible = new ArrayList<>();
 		listaCarrito = new ArrayList<>();
 		setTitle("Contrato");
-		setBounds(100, 100, 586, 494);
+		setBounds(100, 100, 586, 545);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -103,56 +104,45 @@ public class VentaPlan extends JDialog {
 				panel.add(panel_1);
 				panel_1.setLayout(null);
 				{
-					JLabel lblCodigoDelCliente = new JLabel("Codigo del cliente:");
+					JLabel lblCodigoDelCliente = new JLabel("Cedula del Cliente:");
 					lblCodigoDelCliente.setBounds(10, 31, 105, 14);
 					panel_1.add(lblCodigoDelCliente);
 				}
 				{
 					txtcodecliente = new JTextField();
-					txtcodecliente.setBounds(10, 50, 86, 20);
+					txtcodecliente.setBounds(10, 50, 118, 20);
 					panel_1.add(txtcodecliente);
 					txtcodecliente.setColumns(10);
 				}
 				
 				btnBuscar = new JButton("Buscar");
-				btnBuscar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						
-						
-						
-						
-					}
-				});
 				btnBuscar.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						Cliente aux = null;
 						if(!txtcodecliente.getText().equalsIgnoreCase("")){
-						aux= Empresa.getInstance().findclientbycode(txtcodecliente.getText());
-						if(aux == null){
-						int delete = JOptionPane.showConfirmDialog(null, "Cliente no registrado \n Desea registrarlo? " , null, JOptionPane.YES_NO_OPTION);
-					    if (delete == JOptionPane.YES_OPTION)
-					    {
-							txtcodecliente.setText("");
-							RegistroClientes regC = new RegistroClientes( aux);
-							regC.setModal(true);
-							regC.setLocationRelativeTo(null);
-							regC.setVisible(true);
-					    
-					    }	
-					}else{
-					
-						
-						txtnombre.setText(aux.getNombre());
-						txttelefono.setText(aux.getTelefono());
-						
-					}
+							aux= Empresa.getInstance().findclientbycedula(txtcodecliente.getText());
+							if(aux == null){
+								int delete = JOptionPane.showConfirmDialog(null, "Cliente no registrado \n Desea registrarlo? " , null, JOptionPane.YES_NO_OPTION);
+							    if (delete == JOptionPane.YES_OPTION)
+							    {
+									txtcodecliente.setText("");
+									RegistroClientes regC = new RegistroClientes( aux);
+									regC.setModal(true);
+									regC.setLocationRelativeTo(null);
+									regC.setVisible(true);
+							    }	
+							}else{
+							
+							txtnombre.setText(aux.getNombre());
+							txttelefono.setText(aux.getTelefono());
+							}
 					}else{
 						JOptionPane.showMessageDialog(null, "Verifique que todos los campos esten llenos", null, JOptionPane.ERROR_MESSAGE, null);
 					}
 					}
 				});
-				btnBuscar.setBounds(106, 49, 86, 23);
+				btnBuscar.setBounds(154, 49, 86, 23);
 				panel_1.add(btnBuscar);
 				
 				JLabel lblNombre = new JLabel("Nombre:");
@@ -160,16 +150,16 @@ public class VentaPlan extends JDialog {
 				panel_1.add(lblNombre);
 				
 				txtnombre = new JTextField();
-				txtnombre.setBounds(10, 109, 161, 20);
+				txtnombre.setBounds(10, 109, 206, 20);
 				panel_1.add(txtnombre);
 				txtnombre.setColumns(10);
 				
 				JLabel lblTelefono = new JLabel("Telefono");
-				lblTelefono.setBounds(226, 89, 86, 14);
+				lblTelefono.setBounds(288, 89, 86, 14);
 				panel_1.add(lblTelefono);
 				
 				txttelefono = new JTextField();
-				txttelefono.setBounds(226, 109, 161, 20);
+				txttelefono.setBounds(288, 109, 206, 20);
 				panel_1.add(txttelefono);
 				txttelefono.setColumns(10);
 			}
@@ -270,15 +260,18 @@ public class VentaPlan extends JDialog {
 								misplanes.add(plan);
 							}
 						}
+				        
 					    if(Empresa.getInstance().findclientbycode(txtcodecliente.getText())!=null){
 					      miCliente = Empresa.getInstance().findclientbycode(txtcodecliente.getText()); 	
 					    }else{
 						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes,misfacturas, txtcedula.getText(),txtdireccion.getText());
 					    }
 						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
+						 
 						Empresa.getInstance().getMisventas().add(vent);
 						//System.out.println(Empresa.getInstance().getMisventas().size());
 						clean();
+						
 					}
 				});
 				btnRegistrar.setActionCommand("OK");

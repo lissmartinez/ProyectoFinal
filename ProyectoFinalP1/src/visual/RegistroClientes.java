@@ -125,9 +125,11 @@ public class RegistroClientes extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(!txtNombre.getText().equalsIgnoreCase("")) {
+							String codigo = txtCodigo.getText();
 							String nombre = txtNombre.getText();
 							String telefono =  textFieldnumber.getText();
-							String codigo = txtCodigo.getText();
+							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
+							ArrayList<Factura> misfacturas= Empresa.getInstance().getMisfacturas();
 							String cedula= textFieldCedula.getText();
 							String direccion= textFieldDireccion.getText();
 							
@@ -135,10 +137,9 @@ public class RegistroClientes extends JDialog {
 							
 						//boolean estado = (Boolean) null;
 						//float cuantaxpagar = (Float) null;
-							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
-							ArrayList<Factura> misfacturas= Empresa.getInstance().getMisfacturas();
 							
-							Cliente cli = new Cliente(nombre, telefono, codigo, misplanes, misfacturas,cedula, direccion);
+							
+							Cliente cli = new Cliente(codigo,nombre, telefono, misplanes, misfacturas,cedula, direccion);
 							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
