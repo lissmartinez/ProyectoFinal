@@ -116,6 +116,33 @@ private Personal aux;
 		});
 		mnClientes.add(mntmListaDeClientes);
 		
+		JMenu mnPlanes = new JMenu("Planes");
+		menuBar.add(mnPlanes);
+		
+		JMenuItem mntmCrearPlan = new JMenuItem("Crear plan");
+		mntmCrearPlan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Plan pla = null;
+				CrearPlan crr = new CrearPlan(pla);
+				crr.setModal(true);
+				crr.setLocationRelativeTo(null);
+				crr.setVisible(true);
+			}
+		});
+		mnPlanes.add(mntmCrearPlan);
+		
+		JMenuItem mntmListaDePlanes = new JMenuItem("Lista de planes");
+		mntmListaDePlanes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaPlan crr = new ListaPlan();
+				crr.setModal(true);
+				crr.setLocationRelativeTo(null);
+				crr.setVisible(true);
+				
+			}
+		});
+		mnPlanes.add(mntmListaDePlanes);
+		
 		JMenu mnNewMenu = new JMenu("Contrato");
 		menuBar.add(mnNewMenu);
 		
@@ -132,7 +159,7 @@ private Personal aux;
 		JMenu mnFacturas = new JMenu("Facturas");
 		menuBar.add(mnFacturas);
 		
-		JMenuItem mntmFactura = new JMenuItem("Factura");
+		JMenuItem mntmFactura = new JMenuItem("Facturar");
 		mntmFactura.addActionListener(new ActionListener() {
 		
 
@@ -144,21 +171,6 @@ private Personal aux;
 		
 		JMenuItem mntmGenerarFactura = new JMenuItem("Generar factura");
 		mnFacturas.add(mntmGenerarFactura);
-		
-		JMenu mnPlanes = new JMenu("Planes");
-		menuBar.add(mnPlanes);
-		
-		JMenuItem mntmCrearPlan = new JMenuItem("Crear plan");
-		mntmCrearPlan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Plan pla = null;
-				CrearPlan crr = new CrearPlan(pla);
-				crr.setModal(true);
-				crr.setLocationRelativeTo(null);
-				crr.setVisible(true);
-			}
-		});
-		mnPlanes.add(mntmCrearPlan);
 	}
 	private static class __Tmp {
 		private static void __tmp() {

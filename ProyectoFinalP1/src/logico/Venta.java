@@ -18,7 +18,7 @@ public class Venta {
 		this.montoTotal = montoTotal;
 		this.comision = (float) (montoTotal*0.02);
 		this.comerciante = comerciante;
-		this.comerciante.setComision(this.comerciante.getComision()+this.comision);
+		//this.comerciante.setComision(this.comerciante.getComision()+this.comision);
 	}
 
 	public String getCodigo() {

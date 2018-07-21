@@ -28,6 +28,7 @@ import javax.swing.border.TitledBorder;
 import logico.Cliente;
 import logico.Empresa;
 import logico.Plan;
+import logico.Venta;
 
 public class VentaPlan extends JDialog {
 
@@ -50,6 +51,7 @@ public class VentaPlan extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			VentaPlan dialog = new VentaPlan();
@@ -59,7 +61,7 @@ public class VentaPlan extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	/**
 	 * Create the dialog.
 	 */
@@ -198,6 +200,8 @@ public class VentaPlan extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					listaCarrito.add(code);
 					loadListadeCompra();
+					listaDisponible.remove(code);
+					loadListaDisponible();
 					btnSelect.setEnabled(false);
 				}
 
@@ -251,6 +255,25 @@ public class VentaPlan extends JDialog {
 				JButton btnRegistrar = new JButton("Registrar");
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						ArrayList<Plan> misplanes = new ArrayList<>();
+						Cliente miCliente = null;
+						float precio = 0;
+				        for (String codigos : listaCarrito) {
+							String planId = codigos.substring(0, codigos.indexOf('-'));
+							Plan plan = Empresa.getInstance().findplanbycode(planId);
+							if(plan != null){
+								precio+=(plan.getPrecio()*1.18);
+								misplanes.add(plan);
+							}
+						}
+					    if(Empresa.getInstance().findclientbycode(txtcodecliente.getText())!=null){
+					      miCliente = Empresa.getInstance().findclientbycode(txtcodecliente.getText()); 	
+					    }else{
+						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes);
+					    }
+						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
+						Empresa.getInstance().getMisventas().add(vent);
+						//System.out.println(Empresa.getInstance().getMisventas().size());
 						clean();
 					}
 				});

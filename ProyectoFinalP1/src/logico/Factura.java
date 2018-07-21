@@ -1,18 +1,26 @@
 package logico;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Factura {
+	
 	private boolean estado; //pendiente o pagada
 	private float precioTotal;
-	ArrayList<Cliente> misclientes;
-	ArrayList<Plan> misplanes;
-	public Factura(boolean estado, float precioTotal, ArrayList<Cliente> misclientes, ArrayList<Plan> misplanes) {
+	private String nombre;
+	//ArrayList<Cliente> misclientes;
+	private Date fechaEmision;
+	
+	ArrayList<String> misplanes;
+	
+	public Factura(boolean estado, float precioTotal, String nombre, ArrayList<String> misplanes) {
 		super();
 		this.estado = estado;
 		this.precioTotal = precioTotal;
-		this.misclientes = new ArrayList<>();
+		//this.misclientes = new ArrayList<>();
 		this.misplanes = new ArrayList<>();
+		this.fechaEmision=new Date();
 	}
 	public boolean isEstado() {
 		return estado;
@@ -26,18 +34,26 @@ public class Factura {
 	public void setPrecioTotal(float precioTotal) {
 		this.precioTotal = precioTotal;
 	}
-	public ArrayList<Cliente> getMisclientes() {
-		return misclientes;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setMisclientes(ArrayList<Cliente> misclientes) {
-		this.misclientes = misclientes;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public ArrayList<Plan> getMisplanes() {
+	public Date getFechaEmision() {
+		return fechaEmision;
+	}
+	public void setFechaEmision(Date fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+	public ArrayList<String> getMisplanes() {
 		return misplanes;
 	}
-	public void setMisplanes(ArrayList<Plan> misplanes) {
+	public void setMisplanes(ArrayList<String> misplanes) {
 		this.misplanes = misplanes;
 	}
+	
+	
 	
 
 }
