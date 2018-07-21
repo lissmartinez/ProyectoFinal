@@ -51,6 +51,7 @@ public class VentaPlan extends JDialog {
 	private JButton btnSelect;
 	private JButton btnUnselect;
 	private JButton btnBuscar;
+	private JTextField txttotal;
 
 	/**
 	 * Launch the application.
@@ -239,6 +240,16 @@ public class VentaPlan extends JDialog {
 			jlistcarrito.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			jlistcarrito.setModel(planContratar);
 			scrollPane_1.setViewportView(jlistcarrito);
+			
+			JLabel lblNewLabel = new JLabel("Total");
+			lblNewLabel.setBounds(329, 394, 46, 14);
+			panel.add(lblNewLabel);
+			
+			txttotal = new JTextField();
+			txttotal.setEditable(false);
+			txttotal.setBounds(329, 413, 86, 20);
+			panel.add(txttotal);
+			txttotal.setColumns(10);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -261,14 +272,19 @@ public class VentaPlan extends JDialog {
 							}
 						}
 				        
-					    if(Empresa.getInstance().findclientbycode(txtcodecliente.getText())!=null){
-					      miCliente = Empresa.getInstance().findclientbycode(txtcodecliente.getText()); 	
+					   /* if(Empresa.getInstance().findclientbycedula(txtcodecliente.getText() !=null)){
+					      miCliente = Empresa.getInstance().findclientbycedula(txtcodecliente.getText()); 	
 					    }else{
 						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes,misfacturas, txtcedula.getText(),txtdireccion.getText());
-					    }
+					    }*/
 						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
-						 
-						Empresa.getInstance().getMisventas().add(vent);
+						txttotal.setText("$"+Float.toString(vent.Pago()));
+						 int option =JOptionPane.showConfirmDialog(null, "El monto total a pagar es de:$"+vent.Pago(),"Información",JOptionPane.WARNING_MESSAGE);
+							if(option == JOptionPane.OK_OPTION){
+				            JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+								Empresa.getInstance().getMisventas().add(vent);
+							}
+						
 						//System.out.println(Empresa.getInstance().getMisventas().size());
 						clean();
 						
@@ -332,5 +348,7 @@ public class VentaPlan extends JDialog {
 		txtcodecliente.setText("");
 		txtnombre.setText("");
 		txttelefono.setText("");
+		planDisponible.removeAllElements();
+        planContratar.removeAllElements();
 	}
 }

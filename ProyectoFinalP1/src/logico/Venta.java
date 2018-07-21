@@ -17,7 +17,7 @@ public class Venta {
 		this.cli = cli;
 		this.planes = planes;
 		this.montoTotal = montoTotal;
-		this.comision = (float) (montoTotal*0.02);
+		this.comision = (float) (Pago()*0.02);
 		this.comerciante = comerciante;
 		//this.comerciante.setComision(this.comerciante.getComision()+this.comision);
 	}
