@@ -164,7 +164,9 @@ private Personal aux;
 		
 
 			public void actionPerformed(ActionEvent e) {
-			
+				Facturar fact = new Facturar();
+				fact.setModal(true);
+				fact.setVisible(true);
 			}
 		});
 		mnFacturas.add(mntmFactura);

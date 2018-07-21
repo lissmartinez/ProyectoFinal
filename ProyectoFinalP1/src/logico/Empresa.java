@@ -75,6 +75,7 @@ public Cliente findclientbycedula(String cedula) {
 		 }
 	 return aux;
  }
+
 public Personal findpersonalbycode (String code) {
 	// TODO Auto-generated method stub
 	 Personal aux = null;
