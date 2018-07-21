@@ -70,7 +70,7 @@ import javax.swing.DefaultComboBoxModel;
 				setTitle("Registro de Empleados");
 			}
 			
-			setBounds(100, 100, 534, 448);
+			setBounds(100, 100, 501, 500);
 			getContentPane().setLayout(new BorderLayout());
 			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 			getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -78,66 +78,66 @@ import javax.swing.DefaultComboBoxModel;
 			
 			JPanel panel = new JPanel();
 			panel.setBorder(new TitledBorder(null, "Datos Del Empleado", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-			panel.setBounds(10, 33, 474, 180);
+			panel.setBounds(10, 21, 466, 252);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
 			JLabel lblRadio = new JLabel("Nombre:");
-			lblRadio.setBounds(10, 21, 97, 14);
+			lblRadio.setBounds(10, 67, 97, 14);
 			panel.add(lblRadio);
 			
 			textNombre = new JTextField();
-			textNombre.setBounds(10, 36, 209, 20);
+			textNombre.setBounds(10, 92, 209, 20);
 			panel.add(textNombre);
 			textNombre.setColumns(10);
 			
 			lblCodigo = new JLabel("Codigo:");
-			lblCodigo.setBounds(246, 21, 46, 14);
+			lblCodigo.setBounds(10, 11, 46, 14);
 			panel.add(lblCodigo);
 			
 			textcode = new JTextField();
-			textcode.setBounds(246, 36, 197, 20);
+			textcode.setBounds(10, 36, 209, 20);
 			textcode.setText(""+String.valueOf(Empresa.getInstance().getMistrabajadores().size()+1));
 			panel.add(textcode);
 			textcode.setColumns(10);
 			
 			JLabel lblUsuario = new JLabel("Usuario:");
-			lblUsuario.setBounds(10, 67, 83, 14);
+			lblUsuario.setBounds(10, 123, 83, 14);
 			panel.add(lblUsuario);
 			
 			textuser = new JTextField();
-			textuser.setBounds(10, 92, 209, 20);
+			textuser.setBounds(10, 148, 209, 20);
 			panel.add(textuser);
 			textuser.setColumns(10);
 			
 			JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-			lblContrasea.setBounds(246, 67, 125, 14);
+			lblContrasea.setBounds(256, 123, 125, 14);
 			panel.add(lblContrasea);
 			
 			lblSueldoBase = new JLabel("Sueldo Base:");
-			lblSueldoBase.setBounds(10, 123, 133, 14);
+			lblSueldoBase.setBounds(10, 189, 133, 14);
 			panel.add(lblSueldoBase);
 			
 			textsueldo = new JTextField();
-			textsueldo.setBounds(10, 149, 209, 20);
+			textsueldo.setBounds(10, 215, 209, 20);
 			panel.add(textsueldo);
 			textsueldo.setColumns(10);
 			
 			texthext = new JTextField();
-			texthext.setBounds(246, 149, 197, 20);
+			texthext.setBounds(256, 215, 197, 20);
 			panel.add(texthext);
 			texthext.setColumns(10);
 			
 			lblPagoPorHoras = new JLabel("Pago por horas extras:");
-			lblPagoPorHoras.setBounds(256, 123, 159, 14);
+			lblPagoPorHoras.setBounds(256, 189, 159, 14);
 			panel.add(lblPagoPorHoras);
 			
 			passwordField = new JPasswordField();
-			passwordField.setBounds(246, 92, 197, 20);
+			passwordField.setBounds(256, 148, 198, 20);
 			panel.add(passwordField);
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBounds(10, 213, 474, 55);
+			panel_1.setBounds(10, 288, 466, 55);
 			contentPanel.add(panel_1);
 			panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tipo De Empleado", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel_1.setLayout(null);
@@ -147,8 +147,8 @@ import javax.swing.DefaultComboBoxModel;
 				public void actionPerformed(ActionEvent e) {
 					rdbtnAdm.setSelected(true);
 					rdbtnCom.setSelected(false);
-					panel_2.setVisible(false);
-					panel_3.setVisible(true);
+					panel_2.setVisible(true);
+					panel_3.setVisible(false);
 				}
 			});
 			rdbtnAdm.setSelected(true);
@@ -160,21 +160,16 @@ import javax.swing.DefaultComboBoxModel;
 				public void actionPerformed(ActionEvent e) {
 					rdbtnAdm.setSelected(false);
 					rdbtnCom.setSelected(true);
-					panel_2.setVisible(true);
-					panel_3.setVisible(false);
+					panel_2.setVisible(false);
+					panel_3.setVisible(true);
 				}
 			});
 			rdbtnCom.setBounds(151, 25, 128, 23);
 			panel_1.add(rdbtnCom);
 			
-			panel_3 = new JPanel();
-			panel_3.setBounds(10, 288, 474, 55);
-			contentPanel.add(panel_3);
-			panel_3.setLayout(null);
-			
 			panel_2 = new JPanel();
-			panel_2.setBounds(0, 0, 474, 55);
-			panel_3.add(panel_2);
+			panel_2.setBounds(10, 354, 466, 55);
+			contentPanel.add(panel_2);
 			panel_2.setLayout(null);
 			
 			comboBoxCargo = new JComboBox();
@@ -185,6 +180,11 @@ import javax.swing.DefaultComboBoxModel;
 			lblCargo = new JLabel("Cargo:");
 			lblCargo.setBounds(10, 27, 40, 14);
 			panel_2.add(lblCargo);
+			
+			panel_3 = new JPanel();
+			panel_3.setBounds(0, 0, 466, 55);
+			panel_2.add(panel_3);
+			panel_3.setLayout(null);
 			{
 				JPanel buttonPane = new JPanel();
 				buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));

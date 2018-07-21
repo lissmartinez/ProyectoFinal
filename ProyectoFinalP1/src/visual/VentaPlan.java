@@ -27,6 +27,7 @@ import javax.swing.border.TitledBorder;
 
 import logico.Cliente;
 import logico.Empresa;
+import logico.Factura;
 import logico.Plan;
 import logico.Venta;
 
@@ -38,6 +39,8 @@ public class VentaPlan extends JDialog {
 	private JTextField txtcodecliente;
 	private JTextField txtnombre;
 	private JTextField txttelefono;
+	private JTextField txtdireccion;
+	private JTextField txtcedula;
 	private JList jlistcarrito;
 	private JList jlistdisponible;
 	private ArrayList<String> listaDisponible;
@@ -256,6 +259,7 @@ public class VentaPlan extends JDialog {
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ArrayList<Plan> misplanes = new ArrayList<>();
+						ArrayList<Factura> misfacturas = new ArrayList<>();
 						Cliente miCliente = null;
 						float precio = 0;
 				        for (String codigos : listaCarrito) {
@@ -269,7 +273,7 @@ public class VentaPlan extends JDialog {
 					    if(Empresa.getInstance().findclientbycode(txtcodecliente.getText())!=null){
 					      miCliente = Empresa.getInstance().findclientbycode(txtcodecliente.getText()); 	
 					    }else{
-						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes);
+						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes,misfacturas, txtcedula.getText(),txtdireccion.getText());
 					    }
 						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
 						Empresa.getInstance().getMisventas().add(vent);

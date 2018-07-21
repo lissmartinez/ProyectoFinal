@@ -117,7 +117,7 @@ public class ListaPlan extends JDialog {
 							//if(Empresa.getInstance().removeClient(identificador)) {
 								int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el cliente: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
 							  if(option == JOptionPane.OK_OPTION){
-								logico.Empresa.getInstance().getClientes().remove(aux);
+								logico.Empresa.getInstance().getPlanes().remove(aux);
 							    loadTable();
 							    btnEliminar.setEnabled(false);
 							    btnModificar.setEnabled(false);

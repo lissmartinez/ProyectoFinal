@@ -78,17 +78,17 @@ public class ListaEmpleados extends JDialog {
 				btnModificar.setEnabled(false);
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						/*if(table.getSelectedRow()>=0){
+						if(table.getSelectedRow()>=0){
 							Personal aux = Empresa.getInstance().findpersonalbycode(identificador);
 							logico.Empresa.getInstance().getClientes().remove(aux);
 							RegistrarPersonal regpersonal = new RegistrarPersonal(aux);
-							regclient.setModal(true);
-							regclient.setVisible(true);
+							regpersonal.setModal(true);
+							regpersonal.setVisible(true);
 					
 							 btnEliminar.setEnabled(false);
 							 btnModificar.setEnabled(false);
 							 loadTable();				
-						}*/
+						}
 					}
 				});
 				buttonPane.add(btnModificar);

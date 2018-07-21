@@ -15,6 +15,7 @@ import javax.swing.text.MaskFormatter;
 
 import logico.Cliente;
 import logico.Empresa;
+import logico.Factura;
 import logico.Plan;
 
 import javax.swing.JLabel;
@@ -32,6 +33,8 @@ public class RegistroClientes extends JDialog {
 	private JFormattedTextField formattedTextField;
 	private static Cliente cliente;
 	private JTextField textFieldnumber;
+	private JTextField textFieldCedula;
+	private JTextField textFieldDireccion;
 
 	/**
 	 * Launch the application.
@@ -54,7 +57,7 @@ public class RegistroClientes extends JDialog {
 	public RegistroClientes(Cliente cli) {
 		cliente = cli;
 		setTitle("Registro de clientes");
-		setBounds(100, 100, 248, 261);
+		setBounds(100, 100, 474, 274);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -70,7 +73,7 @@ public class RegistroClientes extends JDialog {
 			panel.add(lblCodigo);
 			
 			txtCodigo = new JTextField();
-			txtCodigo.setBounds(10, 39, 86, 20);
+			txtCodigo.setBounds(10, 39, 179, 20);
 			txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
@@ -85,13 +88,31 @@ public class RegistroClientes extends JDialog {
 			txtNombre.setColumns(10);
 			
 			JLabel lblTelefono = new JLabel("Telefono:");
-			lblTelefono.setBounds(10, 116, 86, 14);
+			lblTelefono.setBounds(10, 119, 86, 14);
 			panel.add(lblTelefono);
 			
 			textFieldnumber = new JTextField();
-			textFieldnumber.setBounds(10, 141, 179, 20);
+			textFieldnumber.setBounds(10, 144, 179, 20);
 			panel.add(textFieldnumber);
 			textFieldnumber.setColumns(10);
+			
+			JLabel lblCedula = new JLabel("Cedula:");
+			lblCedula.setBounds(248, 70, 111, 14);
+			panel.add(lblCedula);
+			
+			textFieldCedula = new JTextField();
+			textFieldCedula.setBounds(248, 88, 187, 20);
+			panel.add(textFieldCedula);
+			textFieldCedula.setColumns(10);
+			
+			JLabel lblDireccion = new JLabel("Direccion:");
+			lblDireccion.setBounds(248, 119, 98, 14);
+			panel.add(lblDireccion);
+			
+			textFieldDireccion = new JTextField();
+			textFieldDireccion.setBounds(248, 144, 187, 20);
+			panel.add(textFieldDireccion);
+			textFieldDireccion.setColumns(10);
 			//MaskFormatter a = new MaskFormatter("(###)-###-####");
 			
 		}
@@ -107,11 +128,17 @@ public class RegistroClientes extends JDialog {
 							String nombre = txtNombre.getText();
 							String telefono =  textFieldnumber.getText();
 							String codigo = txtCodigo.getText();
+							String cedula= textFieldCedula.getText();
+							String direccion= textFieldDireccion.getText();
+							
+							
+							
 						//boolean estado = (Boolean) null;
 						//float cuantaxpagar = (Float) null;
 							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
+							ArrayList<Factura> misfacturas= Empresa.getInstance().getMisfacturas();
 							
-							Cliente cli = new Cliente(nombre, telefono, codigo, misplanes);
+							Cliente cli = new Cliente(nombre, telefono, codigo, misplanes, misfacturas,cedula, direccion);
 							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
@@ -137,6 +164,9 @@ public class RegistroClientes extends JDialog {
 	private void clean() {
 		txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 		txtNombre.setText("");
+		textFieldnumber.setText("");
+		textFieldCedula.setText("");
+		textFieldDireccion.setText("");
 		textFieldnumber.setText("");
 		
 	}
