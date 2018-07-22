@@ -72,10 +72,11 @@ public class CrearPlan extends JDialog {
 			}
 			{
 				txtcodigo = new JTextField();
+				txtcodigo.setEditable(false);
 				txtcodigo.setBounds(10, 39, 86, 20);
 				panel.add(txtcodigo);
 				txtcodigo.setColumns(10);
-				txtcodigo.setText(""+String.valueOf(Empresa.getInstance().getPlanes().size()+1));
+				txtcodigo.setText("P-"+String.valueOf(Empresa.getInstance().getPlanes().size()+1));
 			}
 			{
 				JLabel lblNewLabel = new JLabel("Nombre del plan:");

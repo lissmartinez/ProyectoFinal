@@ -95,7 +95,7 @@ private Personal aux;
 			public void actionPerformed(ActionEvent e) {
 				Cliente cli = null;
 				RegistroClientes regCliente = null;
-					regCliente = new RegistroClientes(cli);
+			    regCliente = new RegistroClientes(cli);
 				regCliente.setModal(true);
 				regCliente.setLocationRelativeTo(null);
 				regCliente.setVisible(true);

@@ -73,8 +73,9 @@ public class RegistroClientes extends JDialog {
 			panel.add(lblCodigo);
 			
 			txtCodigo = new JTextField();
+			txtCodigo.setEditable(false);
 			txtCodigo.setBounds(10, 39, 179, 20);
-			txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
+			txtCodigo.setText("C-"+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 			panel.add(txtCodigo);
 			txtCodigo.setColumns(10);
 			

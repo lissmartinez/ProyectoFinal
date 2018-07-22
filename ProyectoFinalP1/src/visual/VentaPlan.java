@@ -92,6 +92,7 @@ public class VentaPlan extends JDialog {
 			}
 			{
 				txtcodigo = new JTextField();
+				txtcodigo.setEditable(false);
 				txtcodigo.setBounds(10, 30, 86, 20);
 				panel.add(txtcodigo);
 				txtcodigo.setColumns(10);

@@ -96,8 +96,9 @@ import javax.swing.DefaultComboBoxModel;
 			panel.add(lblCodigo);
 			
 			textcode = new JTextField();
+			textcode.setEditable(false);
 			textcode.setBounds(10, 36, 209, 20);
-			textcode.setText(""+String.valueOf(Empresa.getInstance().getMistrabajadores().size()+1));
+			textcode.setText("E-"+String.valueOf(Empresa.getInstance().getMistrabajadores().size()+1));
 			panel.add(textcode);
 			textcode.setColumns(10);
 			
