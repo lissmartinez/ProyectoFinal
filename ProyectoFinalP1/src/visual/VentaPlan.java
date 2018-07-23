@@ -52,6 +52,7 @@ public class VentaPlan extends JDialog {
 	private JButton btnUnselect;
 	private JButton btnBuscar;
 	private JTextField txttotal;
+	private float precio;
 
 	/**
 	 * Launch the application.
@@ -73,6 +74,7 @@ public class VentaPlan extends JDialog {
 	public VentaPlan() {
 		listaDisponible = new ArrayList<>();
 		listaCarrito = new ArrayList<>();
+		precio = 0;
 		setTitle("Contrato");
 		setBounds(100, 100, 586, 545);
 		getContentPane().setLayout(new BorderLayout());
@@ -92,7 +94,6 @@ public class VentaPlan extends JDialog {
 			}
 			{
 				txtcodigo = new JTextField();
-				txtcodigo.setEditable(false);
 				txtcodigo.setBounds(10, 30, 86, 20);
 				panel.add(txtcodigo);
 				txtcodigo.setColumns(10);
@@ -118,10 +119,6 @@ public class VentaPlan extends JDialog {
 				}
 				
 				btnBuscar = new JButton("Buscar");
-				btnBuscar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					}
-				});
 				btnBuscar.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -201,6 +198,10 @@ public class VentaPlan extends JDialog {
 					loadListadeCompra();
 					listaDisponible.remove(code);
 					loadListaDisponible();
+					String planId = code.substring(0, code.indexOf('-'));
+					Plan plan = Empresa.getInstance().findplanbycode(planId);
+					precio+=plan.getPrecio(); 
+					txttotal.setText(String.valueOf(precio));
 					btnSelect.setEnabled(false);
 				}
 
@@ -212,7 +213,15 @@ public class VentaPlan extends JDialog {
 			btnUnselect = new JButton("Unselect");
 			btnUnselect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					//listaCarrito.add(code);
+					listaDisponible.add(code);
+					loadListaDisponible();
 					listaCarrito.remove(code);
+				
+					String planId = code.substring(0, code.indexOf('-'));
+					Plan plan = Empresa.getInstance().findplanbycode(planId);
+					precio-=plan.getPrecio(); 
+					txttotal.setText(String.valueOf(precio));
 					loadListadeCompra();
 					btnUnselect.setEnabled(false);
 				}
@@ -253,6 +262,7 @@ public class VentaPlan extends JDialog {
 			txttotal = new JTextField();
 			txttotal.setEditable(false);
 			txttotal.setBounds(329, 413, 86, 20);
+			txttotal.setText(String.valueOf(0));
 			panel.add(txttotal);
 			txttotal.setColumns(10);
 		}
@@ -267,7 +277,7 @@ public class VentaPlan extends JDialog {
 						ArrayList<Plan> misplanes = new ArrayList<>();
 						ArrayList<Factura> misfacturas = new ArrayList<>();
 						Cliente miCliente = null;
-						float precio = 0;
+						
 				        for (String codigos : listaCarrito) {
 							String planId = codigos.substring(0, codigos.indexOf('-'));
 							Plan plan = Empresa.getInstance().findplanbycode(planId);
@@ -283,7 +293,7 @@ public class VentaPlan extends JDialog {
 						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes,misfacturas, txtcedula.getText(),txtdireccion.getText());
 					    }*/
 						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
-						txttotal.setText("$"+Float.toString(vent.Pago()));
+						//txttotal.setText("$"+Float.toString(vent.Pago()));
 						 int option =JOptionPane.showConfirmDialog(null, "El monto total a pagar es de:$"+vent.Pago(),"Información",JOptionPane.WARNING_MESSAGE);
 							if(option == JOptionPane.OK_OPTION){
 				            JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
