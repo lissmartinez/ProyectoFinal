@@ -49,6 +49,7 @@ private Personal aux;
 		setTitle("Gravity Comunications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 603, 527);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -172,6 +173,13 @@ private Personal aux;
 		mnFacturas.add(mntmFactura);
 		
 		JMenuItem mntmGenerarFactura = new JMenuItem("Generar factura");
+		mntmGenerarFactura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GeneradorDeFacturas generar = new GeneradorDeFacturas();
+				generar.setModal(true);
+				generar.setVisible(true);
+			}
+		});
 		mnFacturas.add(mntmGenerarFactura);
 	}
 	private static class __Tmp {

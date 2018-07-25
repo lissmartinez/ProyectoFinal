@@ -12,9 +12,9 @@ public class Factura {
 	//ArrayList<Cliente> misclientes;
 	private Date fechaEmision;
 	
-	ArrayList<String> misplanes;
+	ArrayList<Plan> misplanes;
 	
-	public Factura(boolean estado, float precioTotal, String nombre, ArrayList<String> misplanes) {
+	public Factura(boolean estado, float precioTotal, String nombre, ArrayList<Plan> misplanes) {
 		super();
 		this.estado = estado;
 		this.precioTotal = precioTotal;
@@ -46,10 +46,10 @@ public class Factura {
 	public void setFechaEmision(Date fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
-	public ArrayList<String> getMisplanes() {
+	public ArrayList<Plan> getMisplanes() {
 		return misplanes;
 	}
-	public void setMisplanes(ArrayList<String> misplanes) {
+	public void setMisplanes(ArrayList<Plan> misplanes) {
 		this.misplanes = misplanes;
 	}
 	

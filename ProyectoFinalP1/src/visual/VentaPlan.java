@@ -275,29 +275,30 @@ public class VentaPlan extends JDialog {
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ArrayList<Plan> misplanes = new ArrayList<>();
-						ArrayList<Factura> misfacturas = new ArrayList<>();
 						Cliente miCliente = null;
+						float precioFinal = 0;
 						
 				        for (String codigos : listaCarrito) {
 							String planId = codigos.substring(0, codigos.indexOf('-'));
 							Plan plan = Empresa.getInstance().findplanbycode(planId);
 							if(plan != null){
-								precio+=(plan.getPrecio()*1.18);
+								precioFinal+=(plan.getPrecio()*1.18);
 								misplanes.add(plan);
 							}
 						}
 				        
-					   /* if(Empresa.getInstance().findclientbycedula(txtcodecliente.getText() !=null)){
+					    if(Empresa.getInstance().findclientbycedula(txtcodecliente.getText()) !=null){
 					      miCliente = Empresa.getInstance().findclientbycedula(txtcodecliente.getText()); 	
 					    }else{
-						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(),misplanes,misfacturas, txtcedula.getText(),txtdireccion.getText());
-					    }*/
-						Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
+						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(), txtcedula.getText(),txtdireccion.getText());
+					    }
 						//txttotal.setText("$"+Float.toString(vent.Pago()));
-						 int option =JOptionPane.showConfirmDialog(null, "El monto total a pagar es de:$"+vent.Pago(),"Información",JOptionPane.WARNING_MESSAGE);
+						 int option =JOptionPane.showConfirmDialog(null, "El monto total a pagar es de:$"+precioFinal,"Información",JOptionPane.WARNING_MESSAGE);
 							if(option == JOptionPane.OK_OPTION){
 				            JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-								Empresa.getInstance().getMisventas().add(vent);
+				            miCliente.setMisplanes(misplanes);
+				            Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
+					        Empresa.getInstance().getMisventas().add(vent);
 							}
 						
 						//System.out.println(Empresa.getInstance().getMisventas().size());

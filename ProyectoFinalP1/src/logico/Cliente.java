@@ -12,19 +12,20 @@ public class Cliente {
 	ArrayList<Factura>  misfacturas;
 	private String cedula;
 	private String direccion;
+	private boolean activo;
 	
 	
 
-	public Cliente(String codigo, String nombre, String telefono, ArrayList<Plan> misplanes,
-			ArrayList<Factura> misfacturas, String cedula, String direccion) {
+	public Cliente(String codigo, String nombre, String telefono, String cedula, String direccion) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.misplanes = misplanes;
-		this.misfacturas = misfacturas;
+		this.misplanes = new ArrayList<>();
+		this.misfacturas = new ArrayList<>();
 		this.cedula = cedula;
 		this.direccion = direccion;
+		this.activo = true;
 	}
 
 
@@ -109,6 +110,18 @@ public class Cliente {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	

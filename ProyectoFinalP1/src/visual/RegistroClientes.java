@@ -129,8 +129,6 @@ public class RegistroClientes extends JDialog {
 							String codigo = txtCodigo.getText();
 							String nombre = txtNombre.getText();
 							String telefono =  textFieldnumber.getText();
-							ArrayList<Plan> misplanes = Empresa.getInstance().getPlanes();
-							ArrayList<Factura> misfacturas= Empresa.getInstance().getMisfacturas();
 							String cedula= textFieldCedula.getText();
 							String direccion= textFieldDireccion.getText();
 							
@@ -140,7 +138,7 @@ public class RegistroClientes extends JDialog {
 						//float cuantaxpagar = (Float) null;
 							
 							
-							Cliente cli = new Cliente(codigo,nombre, telefono, misplanes, misfacturas,cedula, direccion);
+							Cliente cli = new Cliente(codigo,nombre, telefono,cedula, direccion);
 							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();

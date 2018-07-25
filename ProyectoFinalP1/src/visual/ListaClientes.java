@@ -92,7 +92,7 @@ public class ListaClientes extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(!identificador.equalsIgnoreCase("")){
 							logico.Cliente aux = logico.Empresa.getInstance().findclientbycode(identificador);
-							logico.Empresa.getInstance().getClientes().remove(aux);
+						//	logico.Empresa.getInstance().getClientes().remove(aux);
 							RegistroClientes regclient = new RegistroClientes(aux);
 							regclient.setModal(true);
 							regclient.setVisible(true);

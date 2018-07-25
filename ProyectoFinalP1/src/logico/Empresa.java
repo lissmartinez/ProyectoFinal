@@ -159,6 +159,16 @@ public void insertpersonal(Personal personal) {
 
 	public static void setEmp(Empresa emp) {
 		Empresa.emp = emp;
+	}
+
+	public int getCantClienteActivos() {
+		int cant = 0;
+		for (Cliente cliente : clientes) {
+			if(cliente.isActivo()){
+				cant++;
+			}
+		}
+		return cant;
 	} 
 
 }
