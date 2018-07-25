@@ -1,6 +1,7 @@
 package logico;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import logico.Plan;
@@ -8,7 +9,11 @@ import logico.Cliente;
 
 
 
-public class Empresa {
+public class Empresa implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Cliente> clientes;
 	private ArrayList<Personal> mistrabajadores;
 	private ArrayList<Plan> planes;
@@ -169,6 +174,19 @@ public void insertpersonal(Personal personal) {
 			}
 		}
 		return cant;
+	}
+
+	public void updatePersonal(Personal aux1) {
+		int index = 0;
+		int i=0;
+		boolean find = false;
+		while (!find && i<mistrabajadores.size()) {
+			if(mistrabajadores.get(i).getCodigo().equalsIgnoreCase(aux1.getCodigo())){
+				find = true;
+				index = i;
+			}
+		}
+		mistrabajadores.set(index,aux1);
 	} 
 
 }

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logico.Empresa;
+
 import java.awt.Toolkit;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
@@ -14,23 +17,30 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class NewPrincipalVisual extends JFrame {
 
 	private JPanel contentPane;
-
+   
+    
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				
 					NewPrincipalVisual frame = new NewPrincipalVisual();
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				
 			}
 		});
 	}

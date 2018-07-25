@@ -1,6 +1,10 @@
 package logico;
 
 public class Administrador extends Personal {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cargo;
 
 	
@@ -24,7 +28,7 @@ public class Administrador extends Personal {
 
 
 
-	public Administrador(String codigo, String nombre, float sueldobase, String usuario, char[] contrasena,
+	public Administrador(String codigo, String nombre, float sueldobase, String usuario, String contrasena,
 			float pagoHoraExt, String cargo) {
 		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt);
 		this.cargo = cargo;

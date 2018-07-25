@@ -1,9 +1,14 @@
 package logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Venta {
+public class Venta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private Cliente cli;
     ArrayList<Plan> planes;

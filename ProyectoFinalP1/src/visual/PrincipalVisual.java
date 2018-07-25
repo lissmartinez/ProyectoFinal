@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logico.Cliente;
+import logico.Empresa;
 import logico.Personal;
 import logico.Plan;
 
@@ -15,8 +16,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class PrincipalVisual extends JFrame {
 
@@ -32,12 +41,33 @@ private Personal aux;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				FileInputStream altice;
+				FileOutputStream altice2;
+				ObjectInputStream alticeRead;
+				ObjectOutputStream alticeWrite;
 				try {
-					PrincipalVisual frame = new PrincipalVisual();
-					frame.setVisible(true);
-				} catch (Exception e) {
+					altice = new FileInputStream ("altice.dat");
+					alticeRead = new ObjectInputStream(altice);
+					Empresa temp = (Empresa)alticeRead.readObject();
+					Empresa.setEmp(temp);
+				} catch (FileNotFoundException e) {
+					try {
+						altice2 = new  FileOutputStream("altice.dat");
+						alticeWrite = new ObjectOutputStream(altice2);
+					} catch (FileNotFoundException e1) {
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+					}
+				} catch (IOException e) {
+					
+					
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+					PrincipalVisual frame = new PrincipalVisual();
+					frame.setVisible(true);
+				
 			}
 		});
 	}
@@ -46,9 +76,28 @@ private Personal aux;
 	 * Create the frame.
 	 */
 	public PrincipalVisual() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				FileOutputStream altice2;
+				ObjectOutputStream alticeWrite;
+				try {
+					altice2 = new  FileOutputStream("altice.dat");
+					alticeWrite = new ObjectOutputStream(altice2);
+					alticeWrite.writeObject(Empresa.getInstance());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		setTitle("Gravity Comunications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 603, 527);
+		setBounds(100, 100, 680, 527);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,7 +109,7 @@ private Personal aux;
 		panel.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 567, 21);
+		menuBar.setBounds(0, 0, 654, 21);
 		panel.add(menuBar);
 		
 		JMenu mnProductos = new JMenu("Empleados");

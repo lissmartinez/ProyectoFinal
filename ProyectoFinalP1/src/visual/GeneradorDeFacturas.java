@@ -137,7 +137,7 @@ public class GeneradorDeFacturas extends JDialog {
 	    			timer.stop(); 
 	    			okButton.setEnabled(true);
 	    			cancelButton.setEnabled(true);
-	    			//System.out.println(Empresa.getInstance().getMisfacturas().size());
+	    			System.out.println(Empresa.getInstance().getMisfacturas().size());
 	    			
 	    		}	    					
 		 

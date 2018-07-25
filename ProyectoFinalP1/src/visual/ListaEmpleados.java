@@ -31,6 +31,7 @@ public class ListaEmpleados extends JDialog {
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private String identificador;
+	
 
 	
 	public ListaEmpleados() {
@@ -80,7 +81,7 @@ public class ListaEmpleados extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(table.getSelectedRow()>=0){
 							Personal aux = Empresa.getInstance().findpersonalbycode(identificador);
-							logico.Empresa.getInstance().getClientes().remove(aux);
+							//logico.Empresa.getInstance().getClientes().remove(aux);
 							RegistrarPersonal regpersonal = new RegistrarPersonal(aux);
 							regpersonal.setModal(true);
 							regpersonal.setVisible(true);
