@@ -56,7 +56,12 @@ public class RegistroClientes extends JDialog {
 	 */
 	public RegistroClientes(Cliente cli) {
 		cliente = cli;
-		setTitle("Registro de clientes");
+		if(cliente== null){
+			setTitle("Registro de Clientes");
+		}else{
+			setTitle("Modificar Clientes");
+		}
+	
 		setBounds(100, 100, 474, 274);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -123,8 +128,14 @@ public class RegistroClientes extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				if(cliente == null){
+				  okButton.setText("Registrar");
+				}else{
+					okButton.setText("Modificar");
+				}
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if (cliente==null){
 						if(!txtNombre.getText().equalsIgnoreCase("")) {
 							String codigo = txtCodigo.getText();
 							String nombre = txtNombre.getText();
@@ -143,6 +154,17 @@ public class RegistroClientes extends JDialog {
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							}else {JOptionPane.showMessageDialog(null, "No se puede registrar el cliente, llene los datos faltantes", "Información", JOptionPane.INFORMATION_MESSAGE);}
+					}else{
+						cliente.setCodigo(txtCodigo.getText());
+						cliente.setNombre(txtNombre.getText());
+						cliente.setTelefono(textFieldnumber.getText());
+						cliente.setCedula(textFieldCedula.getText());
+						cliente.setDireccion(textFieldDireccion.getText());
+					
+						Empresa.getInstance().updateclient(cliente);
+						JOptionPane.showMessageDialog(null, "Cliente modificado satisfectoriamente", null, JOptionPane.INFORMATION_MESSAGE, null);
+                        ListaClientes.loadTable();
+					}
 					}
 				});
 				okButton.setActionCommand("OK");

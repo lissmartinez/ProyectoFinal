@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logico.Administrador;
 import logico.Empresa;
+import logico.Personal;
 import logico.Plan;
 
 import javax.swing.UIManager;
@@ -54,7 +56,12 @@ public class CrearPlan extends JDialog {
 	 */
 	public CrearPlan(Plan pla) {
 		plan = pla;
-		setTitle("Registro de planes");
+		if(plan== null){
+			setTitle("Registro de Empleados");
+		}else{
+			setTitle("Modificar Empleados");
+		}
+
 		setBounds(100, 100, 423, 494);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -180,7 +187,9 @@ public class CrearPlan extends JDialog {
 			{
 				JButton okButton = new JButton("Crear");
 				okButton.addActionListener(new ActionListener() {
+				
 					public void actionPerformed(ActionEvent e) {
+						if(plan==null){
 						Plan aux=null;
 						
 						String codigo= txtcodigo.getText();
@@ -212,7 +221,33 @@ public class CrearPlan extends JDialog {
 						Empresa.getInstance().insertPlan(aux);
 						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 						clean();
+						/*}else{
+							plan.setNombre(txtnombre.getText());
+							String codigo= txtcodigo.getText();
+						}
+						if(rdbtnInternet.isSelected()){
+							plan.setCantData(new Integer(txtinternet.getText()));
+							((Plan)plan).setInternet(true);
+							
+						}
+						if(rdbtnTelefono.isSelected()){
+							plan.setCantMinutos(new Integer(txtminutos.getText()));
+							((Plan)plan).setTelefono(true);
+						}
+							
+						if(rdbtnCable.isSelected()){
+							plan.setCantCanales(new Integer (txtcanales.getText()));
+							((Plan)plan).setCable(true);
+							
+						
+						}
+						Empresa.getInstance().updatePlan(plan);
+						JOptionPane.showMessageDialog(null, "Empleado modificado satisfectoriamente", null, JOptionPane.INFORMATION_MESSAGE, null);
+                        ListaPlan.loadTable();
+                        */
+						}
 					}
+					
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
@@ -230,6 +265,24 @@ public class CrearPlan extends JDialog {
 			}
 		}
 	}
+	/*
+	private void loadplan(Plan aux12) {
+		if(aux12!=null){
+			txtnombre.setText(aux12.getNombre());
+			txtcodigo.setText(aux12.getCodigo());
+			
+		}
+		if(rdbtnInternet.isSelected()){
+			new Integer(txtinternet.setText(aux12.getCantData());
+			
+		}
+		
+		
+		
+		
+	}
+	*/
+	
 	public void clean() {
 		txtcodigo.setText(""+(Empresa.getInstance().getPlanes().size()+1));
 		txtcanales.setText("");

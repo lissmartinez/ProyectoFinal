@@ -188,5 +188,32 @@ public void insertpersonal(Personal personal) {
 		}
 		mistrabajadores.set(index,aux1);
 	} 
+	
+	public void updateclient(Cliente aux1) {
+		int index = 0;
+		int i=0;
+		boolean find = false;
+		while (!find && i<clientes.size()) {
+			if(clientes.get(i).getCodigo().equalsIgnoreCase(aux1.getCodigo())){
+				find = true;
+				index = i;
+			}
+		}
+		clientes.set(index,aux1);
+	}
+
+	public void updatePlan(Plan plan) {
+		int index = 0;
+		int i=0;
+		boolean find = false;
+		while (!find && i<planes.size()) {
+			if(planes.get(i).getCodigo().equalsIgnoreCase(plan.getCodigo())){
+				find = true;
+				index = i;
+			}
+		}
+		planes.set(index,plan);
+	}
+
 
 }
