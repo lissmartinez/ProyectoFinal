@@ -87,18 +87,18 @@ public class ListaClientes extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				 btnModificar = new JButton("Modificar");
-				btnModificar.setEnabled(false);
-				btnModificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(!identificador.equalsIgnoreCase("")){
-							logico.Cliente aux = logico.Empresa.getInstance().findclientbycode(identificador);
-							RegistroClientes regclient = new RegistroClientes(aux);
-							regclient.setModal(true);
-							regclient.setVisible(true);
-					
-							 btnEliminar.setEnabled(false);
-							 btnModificar.setEnabled(false);
-							 loadTable();
+					btnModificar.setEnabled(false);
+					btnModificar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if(!identificador.equalsIgnoreCase("")){
+								logico.Cliente aux = logico.Empresa.getInstance().findclientbycode(identificador);
+								RegistroClientes regclient = new RegistroClientes(aux);
+								regclient.setModal(true);
+								regclient.setVisible(true);
+						
+								 btnEliminar.setEnabled(false);
+								 btnModificar.setEnabled(false);
+								 loadTable();
 						}
 					}
 				});
