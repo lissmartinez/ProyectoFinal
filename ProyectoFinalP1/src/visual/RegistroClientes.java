@@ -160,7 +160,18 @@ public class RegistroClientes extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		loadcliente(cli);
 	}
+	private void loadcliente(Cliente  client) {
+		if(client!=null){
+			txtNombre.setText(client.getNombre());
+			txtCodigo.setText(client.getCodigo());
+			textFieldCedula.setText(client.getCedula());
+			textFieldDireccion.setText(client.getDireccion());
+			textFieldnumber.setText(client.getTelefono());
+			
+		}
+		}
 	private void clean() {
 		txtCodigo.setText(""+String.valueOf(Empresa.getInstance().getClientes().size()+1));
 		txtNombre.setText("");
