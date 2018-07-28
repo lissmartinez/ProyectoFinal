@@ -95,7 +95,7 @@ private Personal aux;
 				
 			}
 		});
-		setTitle("Gravity Comunications");
+		setTitle("ALtice Comunications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 680, 527);
 		setLocationRelativeTo(null);
@@ -109,7 +109,7 @@ private Personal aux;
 		panel.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 654, 21);
+		menuBar.setBounds(0, 0, 654, 35);
 		panel.add(menuBar);
 		
 		JMenu mnProductos = new JMenu("Empleados");
