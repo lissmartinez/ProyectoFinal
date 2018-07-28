@@ -53,6 +53,7 @@ public class NewPrincipalVisual extends JFrame {
     private JPanel panel_Contratos;
     private JPanel panel_Planes;
     private JPanel panel_inicio;
+    private JPanel panel_1;
     
 	/**
 	 * Launch the application.
@@ -238,7 +239,7 @@ public class NewPrincipalVisual extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setBounds(0, 0, 638, 348);
-		lblNewLabel_5.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/lane.png")));
+		lblNewLabel_5.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/inicio.png")));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_inicio.add(lblNewLabel_5);
 		
@@ -394,6 +395,15 @@ public class NewPrincipalVisual extends JFrame {
 		panel_sv2.add(lblNewLabel_planes);
 		
 		JLabel label_7 = new JLabel("Servicios:");
+		label_7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				switching2(panel_1);
+				lblNewLabel_planes.setEnabled(true);
+				lblContratos.setEnabled(true);
+				lblFacturas.setEnabled(true);
+			}
+		});
 		label_7.setBounds(0, 0, 120, 67);
 		panel_sv2.add(label_7);
 		label_7.setHorizontalAlignment(SwingConstants.CENTER);
@@ -437,6 +447,16 @@ public class NewPrincipalVisual extends JFrame {
 		layeredPane3.setBounds(0, 67, 638, 281);
 		panel_Servicios2.add(layeredPane3);
 		layeredPane3.setLayout(new CardLayout(0, 0));
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.control);
+		layeredPane3.add(panel_1, "name_1126718384858973");
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/service.png")));
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblNewLabel_7);
 		
 		panel_Facturas = new JPanel();
 		panel_Facturas.setBackground(SystemColor.control);
