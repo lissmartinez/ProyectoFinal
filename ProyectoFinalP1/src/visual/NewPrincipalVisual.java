@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logico.Cliente;
+import logico.Comercial;
 import logico.Empresa;
 import logico.Plan;
 
@@ -143,6 +144,7 @@ public class NewPrincipalVisual extends JFrame {
 		panel_Clientes1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				lblClientes.setEnabled(false);
 				lblServicios.setEnabled(true);
 				lblEmplados1.setEnabled(true);
@@ -179,11 +181,16 @@ public class NewPrincipalVisual extends JFrame {
 		lblEmplados1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmplados1.setForeground(Color.WHITE);
 		lblEmplados1.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		if(Empresa.getLoginUser() instanceof Comercial){
+			lblEmplados1.setEnabled(false);
+		
+		}
 		panel_Empleados1.add(lblEmplados1, BorderLayout.CENTER);
 		
 		JPanel panel_servicios1 = new JPanel();
 		panel_servicios1.addMouseListener(new MouseAdapter() {
 			@Override
+			
 			public void mouseClicked(MouseEvent e) {
 				switching(panel_Servicios2);
 				lblServicios.setEnabled(false);
@@ -193,6 +200,13 @@ public class NewPrincipalVisual extends JFrame {
 		});
 		panel_servicios1.setBackground(Color.GRAY);
 		panel_servicios1.setBounds(0, 201, 219, 67);
+		/*if(Empresa.getLoginUser() instanceof Comercial){
+			
+			lblServicios.setEnabled(false);
+			lblEmplados1.setEnabled(false);
+			lblClientes.setEnabled(true);
+		
+		}*/
 		layeredPane.add(panel_servicios1);
 		panel_servicios1.setLayout(new BorderLayout(0, 0));
 		
@@ -258,11 +272,12 @@ public class NewPrincipalVisual extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Cliente cli = null;
-				RegistroClientes regCliente = null;
-			    regCliente = new RegistroClientes(cli);
-				regCliente.setModal(true);
-				regCliente.setLocationRelativeTo(null);
-				regCliente.setVisible(true);
+				
+					RegistroClientes regCliente = null;
+				    regCliente = new RegistroClientes(cli);
+					regCliente.setModal(true);
+					regCliente.setLocationRelativeTo(null);
+					regCliente.setVisible(true);
 			}
 		});
 		lblNewLabel_4.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/cli.jpg")));
@@ -304,6 +319,7 @@ public class NewPrincipalVisual extends JFrame {
 		panel_Ep2.setLayout(null);
 		panel_Ep2.setBackground(Color.GRAY);
 		panel_Ep2.setBounds(0, 0, 638, 67);
+		
 		panel_Empledos2.add(panel_Ep2);
 		
 		JLabel lblEmpleados_1 = new JLabel("Empleados");
@@ -317,11 +333,21 @@ public class NewPrincipalVisual extends JFrame {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
+		if(Empresa.getLoginUser() instanceof Comercial){
+				RegistrarPersonal regp = new RegistrarPersonal(null);
+				regp.setModal(false);
+				regp.setVisible(false);
+				
+				
+				
+			}else {
 				RegistrarPersonal regp = new RegistrarPersonal(null);
 				regp.setModal(true);
 				regp.setVisible(true);
+			
 			}
+			}
+		
 		});
 		label_1.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/per.png")));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -332,10 +358,20 @@ public class NewPrincipalVisual extends JFrame {
 		label_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(Empresa.getLoginUser() instanceof Comercial){
+					ListaEmpleados listaEmpleados = new ListaEmpleados();
+					listaEmpleados.setModal(false);
+					listaEmpleados.setLocationRelativeTo(null);
+					listaEmpleados.setVisible(false);
+					
+					
+					
+				}else {
 				ListaEmpleados listaEmpleados = new ListaEmpleados();
 				listaEmpleados.setModal(true);
 				listaEmpleados.setLocationRelativeTo(null);
 				listaEmpleados.setVisible(true);
+			}
 			}
 		});
 		label_2.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
@@ -378,6 +414,10 @@ public class NewPrincipalVisual extends JFrame {
 		lblNewLabel_planes.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		lblNewLabel_planes.setForeground(Color.WHITE);
 		lblNewLabel_planes.setBounds(148, 0, 76, 67);
+		if(Empresa.getLoginUser() instanceof Comercial){
+			lblNewLabel_planes.setEnabled(false);
+		
+		}
 		panel_sv2.add(lblNewLabel_planes);
 		
 		JLabel label_7 = new JLabel("Servicios:");
@@ -411,6 +451,10 @@ public class NewPrincipalVisual extends JFrame {
 		lblFacturas.setForeground(Color.WHITE);
 		lblFacturas.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		lblFacturas.setBounds(264, 0, 76, 67);
+		if(Empresa.getLoginUser() instanceof Comercial){
+			lblFacturas.setEnabled(false);
+		
+		}
 		panel_sv2.add(lblFacturas);
 		
 		lblContratos = new JLabel("Contratos");
@@ -453,9 +497,16 @@ public class NewPrincipalVisual extends JFrame {
 		label_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(Empresa.getLoginUser() instanceof Comercial){
+					GeneradorDeFacturas generar = new GeneradorDeFacturas();
+					generar.setModal(false);
+					generar.setVisible(false);
+				
+				}else {
 				GeneradorDeFacturas generar = new GeneradorDeFacturas();
 				generar.setModal(true);
 				generar.setVisible(true);
+				}
 			}
 		});
 		label_4.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/do.png")));
@@ -477,9 +528,16 @@ public class NewPrincipalVisual extends JFrame {
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(Empresa.getLoginUser() instanceof Comercial){
+					Facturar fact = new Facturar();
+					fact.setModal(false);
+					fact.setVisible(false);
+				
+				}else {
 				Facturar fact = new Facturar();
 				fact.setModal(true);
 				fact.setVisible(true);
+			}
 			}
 		});
 		label_3.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/fact.png")));
@@ -496,11 +554,20 @@ public class NewPrincipalVisual extends JFrame {
 		label_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(Empresa.getLoginUser() instanceof Comercial){
+				
+					Plan pla = null;
+					CrearPlan crr = new CrearPlan(pla);
+					crr.setModal(false);
+					crr.setLocationRelativeTo(null);
+					crr.setVisible(false);
+				}else {
 				Plan pla = null;
 				CrearPlan crr = new CrearPlan(pla);
 				crr.setModal(true);
 				crr.setLocationRelativeTo(null);
 				crr.setVisible(true);
+				}
 			}
 		});
 		label_5.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/carrito.png")));
@@ -512,10 +579,17 @@ public class NewPrincipalVisual extends JFrame {
 		label_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(Empresa.getLoginUser() instanceof Comercial){
+					ListaPlan crr = new ListaPlan();
+					crr.setModal(false);
+					crr.setLocationRelativeTo(null);
+					crr.setVisible(false);
+				}else {
 				ListaPlan crr = new ListaPlan();
 				crr.setModal(true);
 				crr.setLocationRelativeTo(null);
 				crr.setVisible(true);
+				}
 			}
 		});
 		label_6.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
