@@ -19,6 +19,8 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -58,41 +60,6 @@ public class NewPrincipalVisual extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				FileInputStream altice;
-				FileOutputStream altice2;
-				ObjectInputStream alticeRead;
-				ObjectOutputStream alticeWrite;
-				try {
-					altice = new FileInputStream ("altice.dat");
-					alticeRead = new ObjectInputStream(altice);
-					Empresa temp = (Empresa)alticeRead.readObject();
-					Empresa.setEmp(temp);
-				} catch (FileNotFoundException e) {
-					try {
-						altice2 = new  FileOutputStream("altice.dat");
-						alticeWrite = new ObjectOutputStream(altice2);
-					} catch (FileNotFoundException e1) {
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-					}
-				} catch (IOException e) {
-					
-					
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				NewPrincipalVisual frame = new NewPrincipalVisual();
-				frame.setVisible(true);
-				
-			}
-		});
-		
-	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -111,6 +78,25 @@ public class NewPrincipalVisual extends JFrame {
 		
 	}
 	public NewPrincipalVisual() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				FileOutputStream altice2;
+				ObjectOutputStream alticeWrite;
+				try {
+					altice2 = new  FileOutputStream("altice.dat");
+					alticeWrite = new ObjectOutputStream(altice2);
+					alticeWrite.writeObject(Empresa.getInstance());
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		setBackground(new Color(51, 153, 102));
 		setTitle("Altice Dominicana");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(NewPrincipalVisual.class.getResource("/imagenes/altice.png")));
@@ -594,5 +580,10 @@ public class NewPrincipalVisual extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(403, 83, 168, 16);
 		panel_6.add(lblNewLabel_3);
+	}
+	private static class __Tmp {
+		private static void __tmp() {
+			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+		}
 	}
 }

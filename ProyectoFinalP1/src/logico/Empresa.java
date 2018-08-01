@@ -4,6 +4,8 @@ package logico;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.JPasswordField;
+
 import logico.Plan;
 import logico.Cliente;
 
@@ -20,6 +22,9 @@ public class Empresa implements Serializable{
 	private ArrayList<Factura> misfacturas;
 	private ArrayList<Venta> misventas;
 	private static Empresa emp;
+	private static Personal loginUser;
+	private static boolean firstTime;
+	
 	
 	public Empresa() {
 		super();
@@ -28,6 +33,7 @@ public class Empresa implements Serializable{
 		this.planes = new ArrayList<>();
 		this.misfacturas = new ArrayList<>();
 		this.misventas = new ArrayList<>();
+
 	}
 	
 	public static Empresa getInstance(){
@@ -165,6 +171,24 @@ public void insertpersonal(Personal personal) {
 	public static void setEmp(Empresa emp) {
 		Empresa.emp = emp;
 	}
+	
+
+
+	public static Personal getLoginUser() {
+		return loginUser;
+	}
+
+	public static void setLoginUser(Personal loginUser) {
+		Empresa.loginUser = loginUser;
+	}
+
+	public static boolean isFirstTime() {
+		return firstTime;
+	}
+
+	public static void setFirstTime(boolean firstTime) {
+		Empresa.firstTime = firstTime;
+	}
 
 	public int getCantClienteActivos() {
 		int cant = 0;
@@ -189,6 +213,8 @@ public void insertpersonal(Personal personal) {
 		mistrabajadores.set(index,aux1);
 	} 
 	
+	
+
 	public void updateclient(Cliente aux1) {
 		int index = 0;
 		int i=0;
@@ -201,6 +227,17 @@ public void insertpersonal(Personal personal) {
 		}
 		clientes.set(index,aux1);
 	}
+	public boolean confirmLogin(String text, JPasswordField passwordField) {
+		boolean login = false;
+		for (Personal personal : mistrabajadores) {
+			if(personal.getUsuario().equals(text)){
+				loginUser = personal;
+				login = true;
+			}
+		}
+		return login;
+	}
+	
 
 	public void updatePlan(Plan plan) {
 		int index = 0;

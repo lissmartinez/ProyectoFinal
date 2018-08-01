@@ -52,7 +52,7 @@ public class RegistrarPersonal extends JDialog {
 	private JLabel lblCargo;
 	private JLabel lblCodigo;
 	private JTextField textcode;
-	private Personal aux1=null;
+	private static Personal aux1=null;
 	private String code;
 	private JTextField textuser;
 	private JLabel lblSueldoBase;
@@ -63,7 +63,15 @@ public class RegistrarPersonal extends JDialog {
 	private JComboBox comboBoxCargo;
 	private JPasswordField confirmPasswordField;
 
-
+	public static void main(String[] args) {
+		try {
+			RegistrarPersonal dialog = new RegistrarPersonal(aux1);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public RegistrarPersonal(Personal aux) {
 		aux1=aux;
 
