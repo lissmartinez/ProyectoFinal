@@ -289,10 +289,11 @@ public class NewPrincipalVisual extends JFrame {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ListaClientes listaClientes = new ListaClientes();
-				listaClientes.setModal(true);
-				listaClientes.setLocationRelativeTo(null);
-				listaClientes.setVisible(true);
+				//AQUI VA LISTA DE CLIENTES
+				ListaClientes listadec = new ListaClientes();
+				listadec.setModal(true);
+				listadec.setLocationRelativeTo(null);
+				listadec.setVisible(true);
 			}
 		});
 		label.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));

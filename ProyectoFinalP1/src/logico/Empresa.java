@@ -24,6 +24,7 @@ public class Empresa implements Serializable{
 	private static Empresa emp;
 	private static Personal loginUser;
 	private static boolean firstTime;
+	private static String MesActual;
 	
 	
 	public Empresa() {
@@ -39,6 +40,7 @@ public class Empresa implements Serializable{
 	public static Empresa getInstance(){
 		 if( emp== null){
 			 emp = new Empresa();
+			 MesActual = "";
 		 }
 		 
 		 return emp;
@@ -256,5 +258,43 @@ public void insertpersonal(Personal personal) {
 		
 		
 	}
+	public Factura findfactbycode(String code) {
+		// TODO Auto-generated method stub
+		 Factura aux = null;
+		 boolean find = false;
+		 int i = 0;
+		 while( i < misfacturas.size() && !find){
+			 if(misfacturas.get(i).getCodigo().equalsIgnoreCase(code))
+			 {
+				 find = true;
+				 aux = misfacturas.get(i);
+			  }
+			 i++;
+			 }
+		 return aux;
+	}
+	public static String getMesActual() {
+		return MesActual;
+	}
+
+	public static void setMesActual(String mesActual) {
+		MesActual = mesActual;
+	}
+
+	public Venta findventabycode(String identificador) {
+		Venta aux = null;
+		 boolean find = false;
+		 int i = 0;
+		 while( i < misventas.size() && !find){
+			 if(misventas.get(i).getCodigo().equalsIgnoreCase(identificador))
+			 {
+				 find = true;
+				 aux = misventas.get(i);
+			  }
+			 i++;
+			 }
+		 return aux;
+	}
+
 
 }

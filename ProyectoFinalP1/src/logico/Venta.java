@@ -56,7 +56,7 @@ public class Venta implements Serializable{
 	}
 
 	public void setMontoTotal(float montoTotal) {
-		this.montoTotal = montoTotal;
+		this.montoTotal = Pago();
 	}
 
 	public float getComision() {

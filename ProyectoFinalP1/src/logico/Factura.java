@@ -11,6 +11,7 @@ public class Factura implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String codigo;
 	private boolean estado; //pendiente o pagada
 	private float precioTotal;
 	private String nombre;
@@ -19,13 +20,20 @@ public class Factura implements Serializable{
 	
 	ArrayList<Plan> misplanes;
 	
-	public Factura(boolean estado, float precioTotal, String nombre, ArrayList<Plan> misplanes) {
+	public Factura(String codigo,boolean estado, float precioTotal, String nombre, ArrayList<Plan> misplanes) {
 		super();
+		this.codigo = codigo;
 		this.estado = estado;
 		this.precioTotal = precioTotal;
 		//this.misclientes = new ArrayList<>();
 		this.misplanes = new ArrayList<>();
 		this.fechaEmision=new Date();
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public boolean isEstado() {
 		return estado;

@@ -15,6 +15,7 @@ import javax.swing.Timer;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
+import logico.Cliente;
 import logico.Empresa;
 import logico.Factura;
 import logico.Venta;
@@ -22,6 +23,8 @@ import logico.Venta;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class GeneradorDeFacturas extends JDialog {
@@ -94,13 +97,16 @@ public class GeneradorDeFacturas extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						okButton.setEnabled(false);
 						cancelButton.setEnabled(false);
+						if(Empresa.getMesActual().equalsIgnoreCase("") || !Empresa.getMesActual().equalsIgnoreCase(date())){
 						for (Venta ventaAux : Empresa.getInstance().getMisventas()) {
 					    	  if(ventaAux.getCli().isActivo()){
-					    		  Factura fac = new Factura(false, ventaAux.getMontoTotal(), ventaAux.getCli().getNombre(), ventaAux.getPlanes());
+					    		  Factura fac = new Factura(ventaAux.getCodigo()+"-"+date(),false, ventaAux.getMontoTotal(), ventaAux.getCli().getNombre(), ventaAux.getPlanes());
 					    		  ventaAux.getCli().getMisfacturas().add(fac);
 					    		  Empresa.getInstance().getMisfacturas().add(fac);
 					    	  }
-					    }
+					     }
+						Empresa.setMesActual(date());
+						}
 						 if (progressBar.getValue() == progressBar.getMaximum()) { 
 		                     progressBar.setValue(0);
 						 }
@@ -124,7 +130,13 @@ public class GeneradorDeFacturas extends JDialog {
 		}
 	}
 	
-    public Action createFacturasLoadAction() { 
+	public String date(){
+		Date fecha = new Date();
+		SimpleDateFormat formatfecha =new SimpleDateFormat("YYYYMMM");
+		return formatfecha.format(fecha);
+	}
+	
+	public Action createFacturasLoadAction() { 
 	return new AbstractAction("generando facturas") { 
 	    public void actionPerformed (ActionEvent e) { 
 	    	
