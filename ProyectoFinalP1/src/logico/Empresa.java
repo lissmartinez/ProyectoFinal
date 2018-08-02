@@ -252,5 +252,9 @@ public void insertpersonal(Personal personal) {
 		planes.set(index,plan);
 	}
 
+	public void sorting() {
+		
+		
+	}
 
 }

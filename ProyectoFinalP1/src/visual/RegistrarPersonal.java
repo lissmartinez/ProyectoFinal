@@ -241,7 +241,7 @@ public class RegistrarPersonal extends JDialog {
 
 									}
 									if(rdbtnCom.isSelected()){
-										per = new Comercial( codigo,nombre,sueldobase, usuario, pass, pagoHoraExt);
+										per = new Comercial(codigo, nombre, sueldobase, usuario, pass, pagoHoraExt);
 									}
 
 									Empresa.getInstance().insertpersonal(per);

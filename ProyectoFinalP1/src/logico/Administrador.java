@@ -30,8 +30,16 @@ public class Administrador extends Personal {
 
 	public Administrador(String codigo, String nombre, float sueldobase, String usuario, String contrasena,
 			float pagoHoraExt, String cargo) {
-		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt);
+		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt, ventas);
 		this.cargo = cargo;
+	}
+
+
+
+	@Override
+	public int compareTo(Personal o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

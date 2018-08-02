@@ -27,6 +27,7 @@ import javax.swing.border.TitledBorder;
 
 
 import logico.Cliente;
+import logico.Comercial;
 import logico.Empresa;
 import logico.Factura;
 import logico.Plan;
@@ -299,6 +300,11 @@ public class VentaPlan extends JDialog {
 				            miCliente.setMisplanes(misplanes);
 				            Venta vent = new Venta(txtcodigo.getText(), miCliente, misplanes, precio, null);
 					        Empresa.getInstance().getMisventas().add(vent);
+					        if( Empresa.getLoginUser() instanceof Comercial) {
+					        	int ventas= Empresa.getLoginUser().getVentas();
+					        	ventas=+1;
+					        }
+					       
 							}
 						
 						//System.out.println(Empresa.getInstance().getMisventas().size());

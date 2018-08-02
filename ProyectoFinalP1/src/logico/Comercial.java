@@ -13,12 +13,13 @@ public class Comercial extends Personal {
 		return salario;
 	}
 
-	public Comercial(String codigo, String nombre, float sueldobase, String usuario, String contrasena, float pagoHoraExt
-			) {
-		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt);
-	
-	}
 
+	public Comercial(String codigo, String nombre, float sueldobase, String usuario, String contrasena,
+			float pagoHoraExt) {
+		super(codigo, nombre, sueldobase, usuario, contrasena, pagoHoraExt, ventas);
+		this.comision = comision;
+		ventas=0;
+	}
 
 
 	public float getComision() {
@@ -28,5 +29,18 @@ public class Comercial extends Personal {
 	public void setComision(float comision) {
 		this.comision = comision;
 	}
+
+
+	@Override
+	public int compareTo(Personal o) {
+	 if(o.getVentas()>ventas){
+		            return -1;
+		        }else if(o.getVentas()>ventas){
+		            return 0;
+		        }else{
+		            return 1;
+		        }
+	}
+
 
 }

@@ -11,7 +11,7 @@ public class PrincipalLogico {
 	
 	public static void main(String[] args) {
 	
-			
+	
 		/*	
 		
 		Plan plan1= new Plan("1", "triple play", "internet", 1500);

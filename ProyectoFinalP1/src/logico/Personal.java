@@ -2,7 +2,7 @@ package logico;
 
 import java.io.Serializable;
 
-public abstract class Personal implements Serializable{
+public abstract class Personal implements Serializable, Comparable<Personal>{
 	/**
 	 * 
 	 */
@@ -13,12 +13,11 @@ public abstract class Personal implements Serializable{
 	private String usuario;
 	private String contrasena;
 	protected float pagoHoraExt;
-
-	
+	protected static int ventas;
 
 
 	public Personal(String codigo, String nombre, float sueldobase, String usuario, String contrasena,
-			float pagoHoraExt) {
+			float pagoHoraExt, int ventas) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -26,13 +25,24 @@ public abstract class Personal implements Serializable{
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 		this.pagoHoraExt = pagoHoraExt;
-		// TODO Auto-generated constructor stub
+		this.ventas = ventas;
 	}
 
 
 	public abstract float calculoSueldo();
 	
 	
+	
+	public int getVentas() {
+		return ventas;
+	}
+
+
+	public void setVentas(int ventas) {
+		this.ventas = ventas;
+	}
+
+
 	public float getPagoHoraExt() {
 		return pagoHoraExt;
 	}
@@ -42,8 +52,6 @@ public abstract class Personal implements Serializable{
 		this.pagoHoraExt = pagoHoraExt;
 	}
 
-
-	
 
 	public String getCodigo() {
 		return codigo;
