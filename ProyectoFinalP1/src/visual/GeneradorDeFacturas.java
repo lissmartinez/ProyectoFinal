@@ -106,6 +106,7 @@ public class GeneradorDeFacturas extends JDialog {
 					    	  }
 					     }
 						Empresa.setMesActual(date());
+						Empresa.getInstance().setUltimoesFactura(date());
 						}
 						 if (progressBar.getValue() == progressBar.getMaximum()) { 
 		                     progressBar.setValue(0);

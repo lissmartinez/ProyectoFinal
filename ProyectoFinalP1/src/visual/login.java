@@ -46,6 +46,7 @@ public class login extends JFrame {
 					empresaRead = new ObjectInputStream(empresa);
 					Empresa temp = (Empresa)empresaRead.readObject();
 					Empresa.setEmp(temp);
+					Empresa.setMesActual(Empresa.getInstance().getUltimoesFactura());
 				} catch (FileNotFoundException e) {
 					try {
 						empresa2 = new  FileOutputStream("altice.dat");

@@ -25,6 +25,7 @@ public class Empresa implements Serializable{
 	private static Personal loginUser;
 	private static boolean firstTime;
 	private static String MesActual;
+	private String ultimoesFactura;
 	
 	
 	public Empresa() {
@@ -34,6 +35,7 @@ public class Empresa implements Serializable{
 		this.planes = new ArrayList<>();
 		this.misfacturas = new ArrayList<>();
 		this.misventas = new ArrayList<>();
+		this.ultimoesFactura = "";
 
 	}
 	
@@ -160,6 +162,14 @@ public void insertpersonal(Personal personal) {
 	}
 	public ArrayList<Venta> getMisventas() {
 		return misventas;
+	}
+
+	public String getUltimoesFactura() {
+		return ultimoesFactura;
+	}
+
+	public void setUltimoesFactura(String ultimoesFactura) {
+		this.ultimoesFactura = ultimoesFactura;
 	}
 
 	public void setMisventas(ArrayList<Venta> misventas) {
