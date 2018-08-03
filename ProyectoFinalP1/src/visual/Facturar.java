@@ -95,6 +95,7 @@ public class Facturar extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					fact = Empresa.getInstance().findfactbycode(code);
 					fact.setEstado(true);
+					JOptionPane.showMessageDialog(null, "Se ha pagado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
 					loadFacturasPendientes(aux);
 					loadFacturas();
 					btnPagar.setEnabled(false);
