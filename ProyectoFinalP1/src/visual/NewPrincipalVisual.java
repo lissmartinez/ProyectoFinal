@@ -102,7 +102,7 @@ public class NewPrincipalVisual extends JFrame {
 		setTitle("Altice Dominicana");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(NewPrincipalVisual.class.getResource("/imagenes/altice.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 873, 509);
+		setBounds(100, 100, 1412, 788);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -110,7 +110,7 @@ public class NewPrincipalVisual extends JFrame {
 		contentPane.setLayout(null);
 		
 	    layeredPane = new JLayeredPane();
-		layeredPane.setBounds(0, 122, 220, 348);
+		layeredPane.setBounds(0, 122, 220, 627);
 		contentPane.add(layeredPane);
 		layeredPane.setLayout(null);
 		
@@ -216,19 +216,46 @@ public class NewPrincipalVisual extends JFrame {
 		lblServicios.setFont(new Font("Arial Black", Font.PLAIN, 18));
 		panel_servicios1.add(lblServicios, BorderLayout.CENTER);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.GRAY);
-		panel_4.setBounds(0, 268, 219, 80);
-		layeredPane.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
+		JPanel panelGraficas = new JPanel();
+		panelGraficas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				graficas gra= new graficas();
+				gra.setVisible(true);
+				gra.setLocationRelativeTo(contentPane);
+				
+			}
+		});
+		panelGraficas.setBackground(Color.GRAY);
+		panelGraficas.setBounds(0, 268, 219, 80);
+		layeredPane.add(panelGraficas);
+		panelGraficas.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("Copyright \u00A9 2017 Altice ");
-		lblNewLabel_1.setForeground(new Color(255, 250, 250));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblNewLabel_1, BorderLayout.CENTER);
+		JLabel lblGraficas = new JLabel("Graficas");
+		lblGraficas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGraficas.setForeground(Color.WHITE);
+		lblGraficas.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		panelGraficas.add(lblGraficas, BorderLayout.CENTER);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.GRAY);
+		panel_2.setBounds(0, 348, 219, 102);
+		layeredPane.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.GRAY);
+		panel_3.setBounds(0, 444, 219, 183);
+		layeredPane.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_9 = new JLabel("Copyright \u00A9 2017 Altice ");
+		label_9.setHorizontalAlignment(SwingConstants.CENTER);
+		label_9.setForeground(new Color(255, 250, 250));
+		panel_3.add(label_9, BorderLayout.CENTER);
 		
 		layeredPane2 = new JLayeredPane();
-		layeredPane2.setBounds(219, 122, 638, 348);
+		layeredPane2.setBounds(219, 122, 1151, 627);
 		contentPane.add(layeredPane2);
 		layeredPane2.setLayout(new CardLayout(0, 0));
 		
@@ -238,14 +265,14 @@ public class NewPrincipalVisual extends JFrame {
 		panel_inicio.setLayout(null);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setBounds(0, 0, 638, 348);
+		lblNewLabel_5.setBounds(0, 0, 1012, 627);
 		lblNewLabel_5.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/inicio.png")));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_inicio.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Bienvenido a la interfaz de altice");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setBounds(205, 39, 222, 16);
+		lblNewLabel_6.setBounds(388, 150, 222, 16);
 		panel_inicio.add(lblNewLabel_6);
 		
 		panel_clinetes2 = new JPanel();
@@ -256,7 +283,7 @@ public class NewPrincipalVisual extends JFrame {
 		
 		JPanel panel_cli2 = new JPanel();
 		panel_cli2.setBackground(Color.GRAY);
-		panel_cli2.setBounds(0, 0, 638, 67);
+		panel_cli2.setBounds(0, 0, 1151, 67);
 		panel_clinetes2.add(panel_cli2);
 		panel_cli2.setLayout(null);
 		
@@ -276,13 +303,13 @@ public class NewPrincipalVisual extends JFrame {
 					RegistroClientes regCliente = null;
 				    regCliente = new RegistroClientes(cli);
 					regCliente.setModal(true);
-					regCliente.setLocationRelativeTo(null);
+					regCliente.setLocationRelativeTo(contentPane);
 					regCliente.setVisible(true);
 			}
 		});
 		lblNewLabel_4.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/cli.jpg")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(83, 103, 194, 183);
+		lblNewLabel_4.setBounds(252, 231, 194, 183);
 		panel_clinetes2.add(lblNewLabel_4);
 		
 		JLabel label = new JLabel("");
@@ -292,23 +319,23 @@ public class NewPrincipalVisual extends JFrame {
 				//AQUI VA LISTA DE CLIENTES
 				ListaClientes listadec = new ListaClientes();
 				listadec.setModal(true);
-				listadec.setLocationRelativeTo(null);
+				listadec.setLocationRelativeTo(contentPane);
 				listadec.setVisible(true);
 			}
 		});
 		label.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(360, 103, 194, 183);
+		label.setBounds(616, 231, 194, 183);
 		panel_clinetes2.add(label);
 		
 		JLabel lblRegistrarClientes = new JLabel("Registrar Clientes");
 		lblRegistrarClientes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegistrarClientes.setBounds(125, 298, 110, 16);
+		lblRegistrarClientes.setBounds(294, 426, 110, 16);
 		panel_clinetes2.add(lblRegistrarClientes);
 		
 		JLabel lblListaDeClientes = new JLabel("Lista de Clientes");
 		lblListaDeClientes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaDeClientes.setBounds(402, 298, 110, 16);
+		lblListaDeClientes.setBounds(658, 426, 110, 16);
 		panel_clinetes2.add(lblListaDeClientes);
 		
 		panel_Empledos2 = new JPanel();
@@ -319,7 +346,7 @@ public class NewPrincipalVisual extends JFrame {
 		JPanel panel_Ep2 = new JPanel();
 		panel_Ep2.setLayout(null);
 		panel_Ep2.setBackground(Color.GRAY);
-		panel_Ep2.setBounds(0, 0, 638, 67);
+		panel_Ep2.setBounds(0, 0, 1151, 67);
 		
 		panel_Empledos2.add(panel_Ep2);
 		
@@ -336,6 +363,7 @@ public class NewPrincipalVisual extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 		if(Empresa.getLoginUser() instanceof Comercial){
 				RegistrarPersonal regp = new RegistrarPersonal(null);
+				regp.setLocationRelativeTo(contentPane);
 				regp.setModal(false);
 				regp.setVisible(false);
 				
@@ -343,6 +371,7 @@ public class NewPrincipalVisual extends JFrame {
 				
 			}else {
 				RegistrarPersonal regp = new RegistrarPersonal(null);
+				regp.setLocationRelativeTo(contentPane);
 				regp.setModal(true);
 				regp.setVisible(true);
 			
@@ -352,7 +381,7 @@ public class NewPrincipalVisual extends JFrame {
 		});
 		label_1.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/per.png")));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setBounds(83, 108, 194, 183);
+		label_1.setBounds(302, 217, 194, 183);
 		panel_Empledos2.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
@@ -362,7 +391,7 @@ public class NewPrincipalVisual extends JFrame {
 				if(Empresa.getLoginUser() instanceof Comercial){
 					ListaEmpleados listaEmpleados = new ListaEmpleados();
 					listaEmpleados.setModal(false);
-					listaEmpleados.setLocationRelativeTo(null);
+					listaEmpleados.setLocationRelativeTo(contentPane);
 					listaEmpleados.setVisible(false);
 					
 					
@@ -370,24 +399,24 @@ public class NewPrincipalVisual extends JFrame {
 				}else {
 				ListaEmpleados listaEmpleados = new ListaEmpleados();
 				listaEmpleados.setModal(true);
-				listaEmpleados.setLocationRelativeTo(null);
+				listaEmpleados.setLocationRelativeTo(contentPane);
 				listaEmpleados.setVisible(true);
 			}
 			}
 		});
 		label_2.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(360, 108, 194, 183);
+		label_2.setBounds(697, 217, 194, 183);
 		panel_Empledos2.add(label_2);
 		
 		JLabel lblRegistrarEmpleados = new JLabel("Registrar Empleados");
 		lblRegistrarEmpleados.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegistrarEmpleados.setBounds(113, 303, 135, 16);
+		lblRegistrarEmpleados.setBounds(332, 412, 135, 16);
 		panel_Empledos2.add(lblRegistrarEmpleados);
 		
 		JLabel lblListaDeEmpleados = new JLabel("Lista de Empleados");
 		lblListaDeEmpleados.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaDeEmpleados.setBounds(381, 303, 152, 16);
+		lblListaDeEmpleados.setBounds(718, 412, 152, 16);
 		panel_Empledos2.add(lblListaDeEmpleados);
 		
 		panel_Servicios2 = new JPanel();
@@ -398,7 +427,7 @@ public class NewPrincipalVisual extends JFrame {
 		JPanel panel_sv2 = new JPanel();
 		panel_sv2.setLayout(null);
 		panel_sv2.setBackground(Color.GRAY);
-		panel_sv2.setBounds(0, 0, 638, 67);
+		panel_sv2.setBounds(0, 0, 1151, 67);
 		panel_Servicios2.add(panel_sv2);
 		
 		lblNewLabel_planes = new JLabel("Planes");
@@ -475,7 +504,7 @@ public class NewPrincipalVisual extends JFrame {
 		panel_sv2.add(lblContratos);
 		
 		layeredPane3 = new JLayeredPane();
-		layeredPane3.setBounds(0, 67, 638, 281);
+		layeredPane3.setBounds(0, 67, 1151, 560);
 		panel_Servicios2.add(layeredPane3);
 		layeredPane3.setLayout(new CardLayout(0, 0));
 		
@@ -500,11 +529,13 @@ public class NewPrincipalVisual extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(Empresa.getLoginUser() instanceof Comercial){
 					GeneradorDeFacturas generar = new GeneradorDeFacturas();
+					generar.setLocationRelativeTo(contentPane);
 					generar.setModal(false);
 					generar.setVisible(false);
 				
 				}else {
 				GeneradorDeFacturas generar = new GeneradorDeFacturas();
+				generar.setLocationRelativeTo(contentPane);
 				generar.setModal(true);
 				generar.setVisible(true);
 				}
@@ -512,17 +543,17 @@ public class NewPrincipalVisual extends JFrame {
 		});
 		label_4.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/do.png")));
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setBounds(345, 6, 239, 231);
+		label_4.setBounds(663, 132, 239, 231);
 		panel_Facturas.add(label_4);
 		
 		JLabel lblFacturar = new JLabel("Facturar");
 		lblFacturar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFacturar.setBounds(105, 248, 135, 16);
+		lblFacturar.setBounds(303, 374, 135, 16);
 		panel_Facturas.add(lblFacturar);
 		
 		JLabel lblGenerarFactura = new JLabel("Generar factura");
 		lblGenerarFactura.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGenerarFactura.setBounds(388, 248, 152, 16);
+		lblGenerarFactura.setBounds(706, 374, 152, 16);
 		panel_Facturas.add(lblGenerarFactura);
 		
 		JLabel label_3 = new JLabel("");
@@ -531,11 +562,13 @@ public class NewPrincipalVisual extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(Empresa.getLoginUser() instanceof Comercial){
 					Facturar fact = new Facturar();
+					fact.setLocationRelativeTo(contentPane);
 					fact.setModal(false);
 					fact.setVisible(false);
 				
 				}else {
 				Facturar fact = new Facturar();
+				fact.setLocationRelativeTo(contentPane);
 				fact.setModal(true);
 				fact.setVisible(true);
 			}
@@ -543,7 +576,7 @@ public class NewPrincipalVisual extends JFrame {
 		});
 		label_3.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/fact.png")));
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setBounds(53, 6, 239, 231);
+		label_3.setBounds(251, 132, 239, 231);
 		panel_Facturas.add(label_3);
 		
 		panel_Planes = new JPanel();
@@ -560,20 +593,20 @@ public class NewPrincipalVisual extends JFrame {
 					Plan pla = null;
 					CrearPlan crr = new CrearPlan(pla);
 					crr.setModal(false);
-					crr.setLocationRelativeTo(null);
+					crr.setLocationRelativeTo(contentPane);
 					crr.setVisible(false);
 				}else {
 				Plan pla = null;
 				CrearPlan crr = new CrearPlan(pla);
 				crr.setModal(true);
-				crr.setLocationRelativeTo(null);
+				crr.setLocationRelativeTo(contentPane);
 				crr.setVisible(true);
 				}
 			}
 		});
 		label_5.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/carrito.png")));
 		label_5.setHorizontalAlignment(SwingConstants.CENTER);
-		label_5.setBounds(88, 47, 239, 184);
+		label_5.setBounds(222, 208, 239, 184);
 		panel_Planes.add(label_5);
 		
 		JLabel label_6 = new JLabel("");
@@ -583,29 +616,29 @@ public class NewPrincipalVisual extends JFrame {
 				if(Empresa.getLoginUser() instanceof Comercial){
 					ListaPlan crr = new ListaPlan();
 					crr.setModal(false);
-					crr.setLocationRelativeTo(null);
+					crr.setLocationRelativeTo(contentPane);
 					crr.setVisible(false);
 				}else {
 				ListaPlan crr = new ListaPlan();
 				crr.setModal(true);
-				crr.setLocationRelativeTo(null);
+				crr.setLocationRelativeTo(contentPane);
 				crr.setVisible(true);
 				}
 			}
 		});
 		label_6.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
-		label_6.setBounds(360, 17, 239, 231);
+		label_6.setBounds(641, 178, 239, 231);
 		panel_Planes.add(label_6);
 		
 		JLabel lblPlanes = new JLabel("Planes");
 		lblPlanes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlanes.setBounds(134, 259, 135, 16);
+		lblPlanes.setBounds(274, 420, 135, 16);
 		panel_Planes.add(lblPlanes);
 		
 		JLabel lblListaDeFacturas = new JLabel("Lista de planes");
 		lblListaDeFacturas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblListaDeFacturas.setBounds(417, 259, 152, 16);
+		lblListaDeFacturas.setBounds(684, 420, 152, 16);
 		panel_Planes.add(lblListaDeFacturas);
 		
 		panel_Contratos = new JPanel();
@@ -618,19 +651,40 @@ public class NewPrincipalVisual extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				VentaPlan vplan = new VentaPlan();
+				vplan.setLocationRelativeTo(contentPane);
 				vplan.setModal(true);
 				vplan.setVisible(true);
 			}
 		});
 		label_8.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/cn.png")));
 		label_8.setHorizontalAlignment(SwingConstants.CENTER);
-		label_8.setBounds(53, 6, 239, 231);
+		label_8.setBounds(257, 174, 239, 231);
 		panel_Contratos.add(label_8);
 		
 		JLabel lblRealizarContrato = new JLabel("Realizar contrato");
 		lblRealizarContrato.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRealizarContrato.setBounds(96, 249, 152, 16);
+		lblRealizarContrato.setBounds(300, 417, 152, 16);
 		panel_Contratos.add(lblRealizarContrato);
+		
+		JLabel label_10 = new JLabel("");
+		label_10.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Listadecontratos lis = new Listadecontratos();
+				lis.setLocationRelativeTo(contentPane);
+				lis.setModal(true);
+				lis.setVisible(true);
+			}
+		});
+		label_10.setIcon(new ImageIcon(NewPrincipalVisual.class.getResource("/imagenes/Lista.png")));
+		label_10.setHorizontalAlignment(SwingConstants.CENTER);
+		label_10.setBounds(642, 174, 239, 231);
+		panel_Contratos.add(label_10);
+		
+		JLabel lblListaDeContratos = new JLabel("Lista de contratos");
+		lblListaDeContratos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblListaDeContratos.setBounds(685, 417, 152, 16);
+		panel_Contratos.add(lblListaDeContratos);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(76, -1, 108, 122);
@@ -641,19 +695,19 @@ public class NewPrincipalVisual extends JFrame {
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new CompoundBorder());
 		panel_6.setBackground(Color.WHITE);
-		panel_6.setBounds(0, -1, 857, 123);
+		panel_6.setBounds(0, -1, 1370, 123);
 		contentPane.add(panel_6);
 		panel_6.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("Together has no limits");
 		lblNewLabel_2.setFont(new Font("Arial Black", Font.PLAIN, 30));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(278, 36, 419, 35);
+		lblNewLabel_2.setBounds(505, 36, 419, 35);
 		panel_6.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Juntos, sin limites.");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(403, 83, 168, 16);
+		lblNewLabel_3.setBounds(631, 83, 168, 16);
 		panel_6.add(lblNewLabel_3);
 	}
 	private static class __Tmp {

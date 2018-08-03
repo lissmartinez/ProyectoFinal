@@ -26,6 +26,7 @@ public class Empresa implements Serializable{
 	private static boolean firstTime;
 	private static String MesActual;
 	private String ultimoesFactura;
+	private float totalventas;
 	
 	
 	public Empresa() {
@@ -36,9 +37,21 @@ public class Empresa implements Serializable{
 		this.misfacturas = new ArrayList<>();
 		this.misventas = new ArrayList<>();
 		this.ultimoesFactura = "";
+		this.totalventas=0;
 
 	}
 	
+	
+	public float getTotalventas() {
+		return totalventas;
+	}
+
+
+	public void setTotalventas(float totalventas) {
+		this.totalventas = totalventas;
+	}
+
+
 	public static Empresa getInstance(){
 		 if( emp== null){
 			 emp = new Empresa();
@@ -55,6 +68,15 @@ public class Empresa implements Serializable{
 		planes.add(aux);
 	}
 
+public float sumatotalventas() {
+	float total=0;
+	for (Personal person : getMistrabajadores()) {
+		if(person instanceof Comercial) {
+			total+=person.getVentas();
+		}
+	}
+	return total;
+}
 
 
 public Cliente findclientbycode(String code) {

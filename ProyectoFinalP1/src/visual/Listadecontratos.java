@@ -22,6 +22,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Listadecontratos extends JDialog {
 
@@ -35,6 +36,8 @@ public class Listadecontratos extends JDialog {
 
 	
 	public Listadecontratos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Listadecontratos.class.getResource("/imagenes/altice.png")));
+		setTitle("Lista de Contratos");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -24,6 +24,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import java.awt.Toolkit;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class login extends JFrame {
 
@@ -80,46 +85,63 @@ public class login extends JFrame {
 	 * Create the frame.
 	 */
 	public login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(login.class.getResource("/imagenes/altice.png")));
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 252, 267);
+		setBounds(100, 100, 240, 372);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.GRAY);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(0, 0, 215, 127);
+		panel.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(login.class.getResource("/imagenes/altice.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblNewLabel, BorderLayout.CENTER);
+		
 		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setBounds(20, 21, 147, 14);
+		lblUsuario.setForeground(Color.WHITE);
+		lblUsuario.setBounds(10, 138, 147, 14);
 		panel.add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(20, 103, 105, 14);
-		panel.add(lblContrasea);
-		
 		textField = new JTextField();
-		textField.setBounds(20, 48, 191, 20);
+		textField.setBounds(10, 165, 191, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		lblContrasea.setForeground(Color.WHITE);
+		lblContrasea.setBounds(10, 220, 105, 14);
+		panel.add(lblContrasea);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(10, 245, 191, 20);
+		panel.add(passwordField);
+		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(49, 289, 89, 23);
+		panel.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Empresa.getInstance().confirmLogin(textField.getText(),passwordField)){
 					NewPrincipalVisual frame = new NewPrincipalVisual();
+					frame.setExtendedState(MAXIMIZED_BOTH);
 					dispose();
 					frame.setVisible(true);
 				};
 				
 			}
 		});
-		btnLogin.setBounds(59, 172, 89, 23);
-		panel.add(btnLogin);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(20, 128, 191, 20);
-		panel.add(passwordField);
 	}
 }

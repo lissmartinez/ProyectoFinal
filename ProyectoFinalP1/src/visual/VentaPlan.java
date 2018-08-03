@@ -32,6 +32,7 @@ import logico.Empresa;
 import logico.Factura;
 import logico.Plan;
 import logico.Venta;
+import java.awt.Toolkit;
 
 public class VentaPlan extends JDialog {
 
@@ -73,6 +74,7 @@ public class VentaPlan extends JDialog {
 	 * Create the dialog.
 	 */
 	public VentaPlan() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentaPlan.class.getResource("/imagenes/altice.png")));
 		listaDisponible = new ArrayList<>();
 		listaCarrito = new ArrayList<>();
 		precio = 0;
@@ -195,6 +197,7 @@ public class VentaPlan extends JDialog {
 			btnSelect.setEnabled(false);
 			btnSelect.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					float total=0;
 					listaCarrito.add(code);
 					loadListadeCompra();
 					listaDisponible.remove(code);
@@ -203,6 +206,8 @@ public class VentaPlan extends JDialog {
 					Plan plan = Empresa.getInstance().findplanbycode(planId);
 					precio+=plan.getPrecio(); 
 					txttotal.setText(String.valueOf(precio));
+					Empresa.getInstance().setTotalventas(Empresa.getInstance().getTotalventas()+precio);
+					
 					btnSelect.setEnabled(false);
 				}
 

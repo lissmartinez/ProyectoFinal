@@ -23,6 +23,7 @@ import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 public class CrearPlan extends JDialog {
 
@@ -55,6 +56,8 @@ public class CrearPlan extends JDialog {
 	 * Create the dialog.
 	 */
 	public CrearPlan(Plan pla) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearPlan.class.getResource("/imagenes/altice.png")));
+		setTitle("Registro de Planes");
 		plan = pla;
 		if(plan== null){
 			setTitle("Registro de Empleados");

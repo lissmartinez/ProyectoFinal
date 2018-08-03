@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class GeneradorDeFacturas extends JDialog {
 
@@ -54,6 +55,7 @@ public class GeneradorDeFacturas extends JDialog {
 	 * Create the dialog.
 	 */
 	public GeneradorDeFacturas() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GeneradorDeFacturas.class.getResource("/imagenes/altice.png")));
 		setTitle("Generador de Facturas");
 		setBounds(100, 100, 450, 161);
 		setLocationRelativeTo(null);

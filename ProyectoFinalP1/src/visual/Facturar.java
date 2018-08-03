@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.Toolkit;
 
 public class Facturar extends JDialog {
 
@@ -52,6 +53,7 @@ public class Facturar extends JDialog {
 	 * Create the dialog.
 	 */
 	public Facturar() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Facturar.class.getResource("/imagenes/altice.png")));
 		setTitle("Pago de facturas");
 		listaDisponible = new ArrayList<>();
 		precio=0;

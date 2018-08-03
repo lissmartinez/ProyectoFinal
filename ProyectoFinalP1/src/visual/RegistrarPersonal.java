@@ -35,6 +35,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Toolkit;
 
 public class RegistrarPersonal extends JDialog {
 
@@ -73,6 +74,8 @@ public class RegistrarPersonal extends JDialog {
 		}
 	}
 	public RegistrarPersonal(Personal aux) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistrarPersonal.class.getResource("/imagenes/altice.png")));
+		setTitle("Registro de empleados");
 		aux1=aux;
 
 		if(aux1== null){

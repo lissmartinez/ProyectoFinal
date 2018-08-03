@@ -1,6 +1,7 @@
 package logico;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 
@@ -10,7 +11,14 @@ import java.util.ArrayList;
 public class PrincipalLogico {
 	
 	public static void main(String[] args) {
-	
+		
+		/*ArrayList<Personal> personal = new ArrayList<>();
+		Personal per = new Personal() {
+			
+		Collections.sort(personal);
+		for (Personal personal2 : personal) {
+			System.out.println(personal2);
+		}*/
 	
 		/*	
 		
