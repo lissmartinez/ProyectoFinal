@@ -298,7 +298,6 @@ public class VentaPlan extends JDialog {
 					    }else{
 						  miCliente = new Cliente(txtcodecliente.getText(), txtnombre.getText(), txttelefono.getText(), txtcedula.getText(),txtdireccion.getText());
 					    }
-						//txttotal.setText("$"+Float.toString(vent.Pago()));
 						 int option =JOptionPane.showConfirmDialog(null, "El monto total a pagar es de:$"+precioFinal,"Información",JOptionPane.WARNING_MESSAGE);
 							if(option == JOptionPane.OK_OPTION){
 				            JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -311,8 +310,6 @@ public class VentaPlan extends JDialog {
 					        }
 					       
 							}
-						
-						//System.out.println(Empresa.getInstance().getMisventas().size());
 						clean();
 						
 					}

@@ -361,7 +361,7 @@ public class NewPrincipalVisual extends JFrame {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-		if(Empresa.getLoginUser() instanceof Comercial){
+		if(Empresa.getLoginUser() instanceof Comercial){ //si el que se conecta es comercial
 				RegistrarPersonal regp = new RegistrarPersonal(null);
 				regp.setLocationRelativeTo(contentPane);
 				regp.setModal(false);
@@ -370,7 +370,7 @@ public class NewPrincipalVisual extends JFrame {
 				
 				
 			}else {
-				RegistrarPersonal regp = new RegistrarPersonal(null);
+				RegistrarPersonal regp = new RegistrarPersonal(null); //si el que se conecta es adm
 				regp.setLocationRelativeTo(contentPane);
 				regp.setModal(true);
 				regp.setVisible(true);

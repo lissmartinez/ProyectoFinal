@@ -41,6 +41,7 @@ public class GeneradorDeFacturas extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			GeneradorDeFacturas dialog = new GeneradorDeFacturas();
@@ -50,7 +51,7 @@ public class GeneradorDeFacturas extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	/**
 	 * Create the dialog.
 	 */
@@ -99,8 +100,8 @@ public class GeneradorDeFacturas extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						okButton.setEnabled(false);
 						cancelButton.setEnabled(false);
-						if(Empresa.getMesActual().equalsIgnoreCase("") || !Empresa.getMesActual().equalsIgnoreCase(date())){
-						for (Venta ventaAux : Empresa.getInstance().getMisventas()) {
+						if(Empresa.getMesActual().equalsIgnoreCase("") || !Empresa.getMesActual().equalsIgnoreCase(date())){// no se puede facturar twice
+						for (Venta ventaAux : Empresa.getInstance().getMisventas()) {//recorre venttas, si el contrato de esa gente ta activo, crea factura 
 					    	  if(ventaAux.getCli().isActivo()){
 					    		  Factura fac = new Factura(ventaAux.getCodigo()+"-"+date(),false, ventaAux.getMontoTotal(), ventaAux.getCli().getNombre(), ventaAux.getPlanes());
 					    		  ventaAux.getCli().getMisfacturas().add(fac);
@@ -113,7 +114,7 @@ public class GeneradorDeFacturas extends JDialog {
 						 if (progressBar.getValue() == progressBar.getMaximum()) { 
 		                     progressBar.setValue(0);
 						 }
-						 timer.start();
+						 timer.start(); //empieza el conteo de 30 dias
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -143,16 +144,15 @@ public class GeneradorDeFacturas extends JDialog {
 	return new AbstractAction("generando facturas") { 
 	    public void actionPerformed (ActionEvent e) { 
 	    	
-	    		if(progressBar.getValue() < progressBar.getMaximum()) { 			
+	    		if(progressBar.getValue() < progressBar.getMaximum()) { //si llego al maximo la barra, quiere decir que hay una mas		
 	    		    progressBar.setValue(progressBar.getValue() + 1); 
 	    		    int value = Integer.valueOf(textField.getText());
 	    		    value++;
 	    		    textField.setText(String.valueOf(value));
 	    		 	} else { 
-	    			timer.stop(); 
+	    			timer.stop(); //para los 30 dias
 	    			okButton.setEnabled(true);
 	    			cancelButton.setEnabled(true);
-	    			System.out.println(Empresa.getInstance().getMisfacturas().size());
 	    			
 	    		}	    					
 		 

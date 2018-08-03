@@ -87,6 +87,7 @@ public class login extends JFrame {
 	public login() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(login.class.getResource("/imagenes/altice.png")));
 		setTitle("Login");
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 240, 372);
 		contentPane = new JPanel();
@@ -134,7 +135,7 @@ public class login extends JFrame {
 		panel.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Empresa.getInstance().confirmLogin(textField.getText(),passwordField)){
+				if(Empresa.getInstance().confirmLogin(textField.getText(),passwordField)){//confirma el usuario y la contraseña
 					NewPrincipalVisual frame = new NewPrincipalVisual();
 					frame.setExtendedState(MAXIMIZED_BOTH);
 					dispose();

@@ -63,7 +63,7 @@ public class RegistrarPersonal extends JDialog {
 	private JPasswordField passwordField;
 	private JComboBox comboBoxCargo;
 	private JPasswordField confirmPasswordField;
-
+/*
 	public static void main(String[] args) {
 		try {
 			RegistrarPersonal dialog = new RegistrarPersonal(aux1);
@@ -73,6 +73,7 @@ public class RegistrarPersonal extends JDialog {
 			e.printStackTrace();
 		}
 	}
+	*/
 	public RegistrarPersonal(Personal aux) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistrarPersonal.class.getResource("/imagenes/altice.png")));
 		setTitle("Registro de empleados");
@@ -250,7 +251,6 @@ public class RegistrarPersonal extends JDialog {
 									Empresa.getInstance().insertpersonal(per);
 									JOptionPane.showMessageDialog(null, "Empleado registrado satisfectoriamente", null, JOptionPane.INFORMATION_MESSAGE, null);
 
-									//System.out.println(empresa.getInstance().getMisquesos().size());	
 									clear();
 								}else{
 									JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden, verifique", null, JOptionPane.WARNING_MESSAGE, null);
@@ -302,10 +302,10 @@ public class RegistrarPersonal extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
-		loadClient(aux1);
+		loadPersonal(aux1);
 	}
 
-	private void loadClient(Personal aux12) {
+	private void loadPersonal(Personal aux12) {
 		if(aux12!=null){
 		textNombre.setText(aux12.getNombre());
 		texthext.setText(String.valueOf(aux12.getPagoHoraExt()));

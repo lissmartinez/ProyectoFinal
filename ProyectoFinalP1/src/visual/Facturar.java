@@ -94,7 +94,7 @@ public class Facturar extends JDialog {
 			btnPagar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					fact = Empresa.getInstance().findfactbycode(code);
-					fact.setEstado(true);
+					fact.setEstado(true); //falso es pendiente y true pagada
 					JOptionPane.showMessageDialog(null, "Se ha pagado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
 					loadFacturasPendientes(aux);
 					loadFacturas();
@@ -133,13 +133,9 @@ public class Facturar extends JDialog {
 							txtBuscar.setText("");
 
 						}else{
-							//for (Venta ventaAux : Empresa.getInstance().getMisventas()) {
-						    //	  if(ventaAux.getCli().get){
-						    		  loadFacturasPendientes(aux);
-										loadFacturas();
-						    	 // }
-						    	  
-							//}
+						    loadFacturasPendientes(aux);
+							loadFacturas();
+						    
 							
 						}
 				}else{
