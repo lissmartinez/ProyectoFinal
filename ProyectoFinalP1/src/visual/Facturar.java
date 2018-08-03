@@ -173,11 +173,7 @@ public class Facturar extends JDialog {
 			}
 
 		}
-		/*for (Venta ventaAux : Empresa.getInstance().getMisventas()) {
-	    	listaDisponible.add(ventaAuxgetCodigo()+"-----$"+ventaAux.getMontoTotal());
-	    		 
-	    	  
-	    }*/
+		
 	}
 
 	private void loadFacturas() {

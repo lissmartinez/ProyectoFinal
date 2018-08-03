@@ -15,7 +15,6 @@ public class Factura implements Serializable{
 	private boolean estado; //pendiente o pagada
 	private float precioTotal;
 	private String nombre;
-	//ArrayList<Cliente> misclientes;
 	private Date fechaEmision;
 	
 	ArrayList<Plan> misplanes;
@@ -25,7 +24,6 @@ public class Factura implements Serializable{
 		this.codigo = codigo;
 		this.estado = estado;
 		this.precioTotal = precioTotal;
-		//this.misclientes = new ArrayList<>();
 		this.misplanes = new ArrayList<>();
 		this.fechaEmision=new Date();
 	}

@@ -64,6 +64,7 @@ public class NewPrincipalVisual extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+    //pasa panel, quita los otros, repinta panel y revalida, mientras otros estan removidos
 	public void switching(JPanel panel) {
 		layeredPane2.removeAll();
 		layeredPane2.add(panel);
@@ -200,13 +201,13 @@ public class NewPrincipalVisual extends JFrame {
 		});
 		panel_servicios1.setBackground(Color.GRAY);
 		panel_servicios1.setBounds(0, 201, 219, 67);
-		/*if(Empresa.getLoginUser() instanceof Comercial){
+		if(Empresa.getLoginUser() instanceof Comercial){
 			
 			lblServicios.setEnabled(false);
 			lblEmplados1.setEnabled(false);
 			lblClientes.setEnabled(true);
 		
-		}*/
+		}
 		layeredPane.add(panel_servicios1);
 		panel_servicios1.setLayout(new BorderLayout(0, 0));
 		

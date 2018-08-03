@@ -43,16 +43,7 @@ public class CrearPlan extends JDialog {
 	 * Launch the application.
 	 */
 	/*
-	public static void main(String[] args) {
-		try {
-			CrearPlan dialog = new CrearPlan(plan);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-*/
+
 	/**
 	 * Create the dialog.
 	 */
@@ -60,9 +51,7 @@ public class CrearPlan extends JDialog {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(CrearPlan.class.getResource("/imagenes/altice.png")));
 		setTitle("Registro de Planes");
 		plan = pla;
-			setTitle("Registro de Empleados");
-		
-
+			
 		setBounds(100, 100, 423, 494);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

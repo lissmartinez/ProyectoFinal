@@ -75,7 +75,7 @@ public class ListaClientes extends JDialog {
 						}
 					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] columnNames = {"Codigo","Nombre", "Telefono"};
+					String[] columnNames = {"Codigo","Cedula","Nombre", "Telefono"};
 					model = new DefaultTableModel();
 					model.setColumnIdentifiers(columnNames);
 					table.setModel(model);
@@ -148,8 +148,9 @@ public class ListaClientes extends JDialog {
 		fila = new Object[model.getColumnCount()];
 		for (logico.Cliente aux : logico.Empresa.getInstance().getClientes()) {
 			fila[0] = aux.getCodigo();
-			fila[1] = aux.getNombre();
-			fila[2] = aux.getTelefono();
+			fila[1] = aux.getCedula();
+			fila[2] = aux.getNombre();
+			fila[3] = aux.getTelefono();
 			model.addRow(fila);
 		}
 		

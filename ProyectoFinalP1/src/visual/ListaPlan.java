@@ -69,8 +69,7 @@ public class ListaPlan extends JDialog {
 					table.addMouseListener(new MouseAdapter() {
 						public void mouseClicked(MouseEvent e) {
 							if(table.getSelectedRow()>=0){
-								btnEliminar.setEnabled(true);
-								btnModificar.setEnabled(true);
+
 								int index = table.getSelectedRow();
 								identificador = (String)table.getModel().getValueAt(index, 0);				
 							}
@@ -90,50 +89,8 @@ public class ListaPlan extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				 btnModificar = new JButton("Modificar");
-				btnModificar.setEnabled(false);
-				btnModificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(!identificador.equalsIgnoreCase("")){
-							Plan aux = Empresa.getInstance().findplanbycode(identificador);
-						    Empresa.getInstance().getPlanes().remove(aux);
-							CrearPlan regpla = new CrearPlan(aux);
-							regpla.setModal(true);
-							regpla.setVisible(true);
-				
-							 btnEliminar.setEnabled(false);
-							 btnModificar.setEnabled(false);
-							 loadTable();
-						}
-					}
-				});
-				buttonPane.add(btnModificar);
-			}
-			{
-				btnEliminar = new JButton("Eliminar");
-				btnEliminar.setEnabled(false);
-				btnEliminar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(!identificador.equalsIgnoreCase("")){
-						   Plan aux = Empresa.getInstance().findplanbycode(identificador);
-							//if(Empresa.getInstance().removeClient(identificador)) {
-								int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el cliente: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
-							  if(option == JOptionPane.OK_OPTION){
-								logico.Empresa.getInstance().getPlanes().remove(aux);
-							    loadTable();
-							    btnEliminar.setEnabled(false);
-							    btnModificar.setEnabled(false);
-							  }
-							//}
-							  //else {JOptionPane.showMessageDialog(null, "No se puede eliminar el cliente", "Información", JOptionPane.INFORMATION_MESSAGE);}
-						}
-					}
-				});
-				btnEliminar.setActionCommand("OK");
-				buttonPane.add(btnEliminar);
-				getRootPane().setDefaultButton(btnEliminar);
-			}
+		
+			
 			{
 				JButton cancelButton = new JButton("Salir");
 				cancelButton.addActionListener(new ActionListener() {
